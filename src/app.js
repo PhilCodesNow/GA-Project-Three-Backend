@@ -2,9 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
-import './css/style.css';
+import './css/style.scss';
 
 const App = (props) => {
+    const baseURL = false 
+    ? 'http://localhost:3000/'
+    : 'https://ga-project-three-backend.herokuapp.com'
+
+
     return (
         <>
             <Header />
