@@ -29213,10 +29213,10 @@ var App = function App(props) {
             case 7:
               console.log('no token');
               _context.next = 10;
-              return fetch('http://localhost:59467/login', {
+              return fetch('http://localhost:3000/login', {
                 method: 'post',
                 body: JSON.stringify({
-                  username: "Philip",
+                  username: "Phil",
                   password: "p"
                 }),
                 headers: {
@@ -29255,26 +29255,24 @@ var App = function App(props) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              console.log('Token in test: ' + token);
-              _context2.next = 3;
-              return fetch('http://localhost:59467/test', {
+              _context2.next = 2;
+              return fetch('http://localhost:3000/test', {
                 method: "GET",
                 headers: {
                   "Authorization": "bearer ".concat(token)
                 }
               });
 
-            case 3:
+            case 2:
               response = _context2.sent;
-              console.log('response.json = ' + response.json());
-              _context2.next = 7;
+              _context2.next = 5;
               return response.json();
 
-            case 7:
+            case 5:
               result = _context2.sent;
-              console.log('result: ' + result);
+              console.log(result);
 
-            case 9:
+            case 7:
             case "end":
               return _context2.stop();
           }
@@ -29287,11 +29285,19 @@ var App = function App(props) {
     };
   }();
 
+  var logout = function logout() {
+    token = '';
+    window.localStorage.removeItem('token');
+  };
+
+  token;
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement("h1", null, "Hello World"), /*#__PURE__*/_react.default.createElement("button", {
     onClick: login
   }, "Login"), /*#__PURE__*/_react.default.createElement("button", {
     onClick: test
-  }, "Test"), /*#__PURE__*/_react.default.createElement(_Footer.default, null));
+  }, "Test"), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: logout
+  }, "Logout"), /*#__PURE__*/_react.default.createElement(_Footer.default, null));
 };
 
 var target = document.getElementById('app');
@@ -29325,7 +29331,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59468" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50677" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
