@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from './components/Header.js';
-import Footer from './components/Footer.js';
+import Login from './components/Login.js';
+import NewAccount from './components/NewAccount.js';
 import './css/style.scss';
 
 const App = (props) => {
@@ -12,9 +12,9 @@ const App = (props) => {
 
     return (
         <>
-            <Header />
+            
             <h1>Hello World</h1>
-            <Footer />
+            
         </>
     );
 };
