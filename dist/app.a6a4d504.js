@@ -29218,18 +29218,55 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
 var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 var _default = function _default(props) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h1", null, "Footer"));
+  var _React$useState = _react.default.useState(props.initial),
+      _React$useState2 = (0, _slicedToArray2.default)(_React$useState, 2),
+      formData = _React$useState2[0],
+      setFormData = _React$useState2[1];
+
+  _react.default.useEffect(function () {
+    setFormData(props.initial);
+  }, [props.initial]);
+
+  var handleChange = function handleChange(event) {
+    setFormData(_objectSpread(_objectSpread({}, formData), {}, (0, _defineProperty2.default)({}, event.target.name, event.target.value)));
+  };
+
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h1", null, "Create Account"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "username",
+    value: FormData.username,
+    placeholder: "Username",
+    onChange: handleChange
+  }), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "password",
+    value: FormData.password,
+    onChange: handleChange
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: function onClick() {
+      props.handleSubmit(formData);
+      resetFormData(resetForm);
+    }
+  }, "Login"));
 };
 
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/defineProperty":"node_modules/@babel/runtime/helpers/defineProperty.js","@babel/runtime/helpers/slicedToArray":"node_modules/@babel/runtime/helpers/slicedToArray.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -29468,8 +29505,10 @@ var App = function App(props) {
   }, "Test"), /*#__PURE__*/_react.default.createElement("button", {
     onClick: logout
   }, "Logout"), /*#__PURE__*/_react.default.createElement(_Login.default, {
+    initial: blank
+  }), /*#__PURE__*/_react.default.createElement(_NewAccount.default, {
     initial: blank,
-    handleSubmit: userCreate
+    handlseSubmit: userCreate
   }));
 };
 
@@ -29504,7 +29543,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54711" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56841" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

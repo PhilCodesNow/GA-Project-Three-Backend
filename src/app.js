@@ -70,7 +70,8 @@ const userCreate = async(data) =>{
              <button onClick={login}>Login</button>
             <button onClick={test}>Test</button>
             <button onClick={logout}>Logout</button>
-            <Login initial={blank} handleSubmit = {userCreate}/>
+            <Login initial={blank} />
+            <NewAccount initial={blank} handlseSubmit = {userCreate}/>
         </>
     );
 };
