@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 export default (props) => {
+    const [formData, setFormData] = React.useState(props.initial);
     React.useEffect(() =>{
         setFormData(props.initial);
     }, [props.initial]);
     const handleChange = (event) =>{
-        setFormData({...handleSubmit, [event.target.name]: event.target.value})
+        setFormData({...formData, [event.target.name]: event.target.value})
     }
     return (
         <>
@@ -16,11 +17,13 @@ export default (props) => {
             name="username"
             value={FormData.username}
             placeholder="Username"
+            onChange={handleChange}
             ></input>
             <input
             type="text"
             name="password"
             value={FormData.password}
+            onChange={handleChange}
             ></input>
             <button
             onClick={() =>{
