@@ -22,7 +22,7 @@ const login = async () =>{
         console.log(token);
     }else{
         console.log('no token');
-        const response = await fetch('http://localhost:3000/login', {
+        const response = await fetch('http://localhost:3000/users/new', {
         method: 'post',
         body: JSON.stringify({username: "Phil", password: "p"}),
         headers: {"Content-Type": "application/json"}

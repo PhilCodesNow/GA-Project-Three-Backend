@@ -29213,7 +29213,7 @@ var App = function App(props) {
             case 7:
               console.log('no token');
               _context.next = 10;
-              return fetch('http://localhost:3000/login', {
+              return fetch('http://localhost:3000/users/new', {
                 method: 'post',
                 body: JSON.stringify({
                   username: "Phil",
@@ -29331,7 +29331,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55621" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59795" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
