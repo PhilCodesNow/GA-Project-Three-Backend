@@ -4,7 +4,9 @@ import ReactDOM from 'react-dom';
 export default (props) => {
     return (
         <>
-            <h1>Header</h1>
+            <h3>Home</h3>
+            <h3>User's Name</h3>
+            <h3>Logout</h3>
         </>
     );
 };
