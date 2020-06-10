@@ -12,8 +12,11 @@ const App = (props) => {
     ? 'http://localhost:3000/'
     : 'https://ga-project-three-backend.herokuapp.com'
 
-    let token;
 
+    const blank = {title:'', url:''};
+
+
+    let token;
 const login = async () =>{
     console.log('start');
     if(window.localStorage.getItem('token')){
@@ -49,6 +52,15 @@ const logout = () => {
     token = ''
     window.localStorage.removeItem('token');
 }
+const userCreate = async(data) =>{
+    const response = await fetch('http://localhost:3000/users/new', {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+}
 
     token
     return (
@@ -58,7 +70,7 @@ const logout = () => {
              <button onClick={login}>Login</button>
             <button onClick={test}>Test</button>
             <button onClick={logout}>Logout</button>
-            <Footer />
+            <Login initial={blank} handleSubmit = {userCreate}/>
         </>
     );
 };

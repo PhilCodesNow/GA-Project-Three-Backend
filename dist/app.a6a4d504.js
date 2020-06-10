@@ -29057,7 +29057,24 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"src/components/Header.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"node_modules/@babel/runtime/helpers/defineProperty.js":[function(require,module,exports) {
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
+},{}],"src/components/Login.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29065,18 +29082,46 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
 var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 var _default = function _default(props) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h1", null, "Header"));
+  _react.default.useEffect(function () {
+    setFormData(props.initial);
+  }, [props.initial]);
+
+  var handleChange = function handleChange(event) {
+    setFormData(_objectSpread(_objectSpread({}, handleSubmit), {}, (0, _defineProperty2.default)({}, event.target.name, event.target.value)));
+  };
+
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h1", null, "Login Page"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "username",
+    value: FormData.username,
+    placeholder: "Username"
+  }), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "password",
+    value: FormData.password
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: function onClick() {
+      props.handleSubmit(formData);
+      resetFormData(resetForm);
+    }
+  }, "Login"));
 };
 
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"src/components/Footer.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/defineProperty":"node_modules/@babel/runtime/helpers/defineProperty.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"src/components/NewAccount.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29178,9 +29223,9 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
-var _Header = _interopRequireDefault(require("./components/Header.js"));
+var _Login = _interopRequireDefault(require("./components/Login.js"));
 
-var _Footer = _interopRequireDefault(require("./components/Footer.js"));
+var _NewAccount = _interopRequireDefault(require("./components/NewAccount.js"));
 
 require("./css/style.scss");
 
@@ -29188,6 +29233,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var App = function App(props) {
   var baseURL = false ? 'http://localhost:3000/' : 'https://ga-project-three-backend.herokuapp.com';
+  var blank = {
+    title: '',
+    url: ''
+  };
   var token;
 
   var login = /*#__PURE__*/function () {
@@ -29290,20 +29339,55 @@ var App = function App(props) {
     window.localStorage.removeItem('token');
   };
 
+  var userCreate = /*#__PURE__*/function () {
+    var _ref3 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3(data) {
+      var response;
+      return _regenerator.default.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return fetch('http://localhost:3000/users/new', {
+                method: 'POST',
+                headers: {
+                  'Content-type': 'application/json'
+                },
+                body: JSON.stringify(data)
+              });
+
+            case 2:
+              response = _context3.sent;
+
+            case 3:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function userCreate(_x) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
   token;
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement("h1", null, "Hello World"), /*#__PURE__*/_react.default.createElement("button", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h1", null, "Hello World"), /*#__PURE__*/_react.default.createElement("button", {
     onClick: login
   }, "Login"), /*#__PURE__*/_react.default.createElement("button", {
     onClick: test
   }, "Test"), /*#__PURE__*/_react.default.createElement("button", {
     onClick: logout
-  }, "Logout"), /*#__PURE__*/_react.default.createElement(_Footer.default, null));
+  }, "Logout"), /*#__PURE__*/_react.default.createElement(_Login.default, {
+    initial: blank,
+    handleSubmit: userCreate
+  }));
 };
 
 var target = document.getElementById('app');
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(App, null), target);
-},{"@babel/runtime/regenerator":"node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"node_modules/@babel/runtime/helpers/asyncToGenerator.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./components/Header.js":"src/components/Header.js","./components/Footer.js":"src/components/Footer.js","./css/style.scss":"src/css/style.scss"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"@babel/runtime/regenerator":"node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"node_modules/@babel/runtime/helpers/asyncToGenerator.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./components/Login.js":"src/components/Login.js","./components/NewAccount.js":"src/components/NewAccount.js","./css/style.scss":"src/css/style.scss"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -29331,7 +29415,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59795" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49606" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
