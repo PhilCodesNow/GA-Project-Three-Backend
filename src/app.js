@@ -7,6 +7,7 @@ import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 import NavBar from './components/NavBar.js';
 import './css/style.scss';
+import AccountForm from './components/AccountForm.js';
 
 
 
@@ -20,6 +21,7 @@ const App = (props) => {
 
     //Create State
     const [contacts, setContacts] = React.useState(null);
+    const [currentPageName, setCurrentPageName] = React.useState('main');
 
     //Edit State
     const [editContact, setEditContact] = React.useState({
@@ -123,15 +125,27 @@ const logout = () => {
     window.localStorage.removeItem('token');
 }
 
-    token
+    let currentPageComponent;
+    if (currentPageName === 'main') {
+        currentPageComponent = <Main contacts={contacts}/>
+    } else if (currentPageName === 'login') {
+        const loginHandlers = {
+            login,
+            logout,
+        }
+        // Need to decide how and where we want logout button to appear
+        currentPageComponent = <Login loginHandlers={loginHandlers} setCurrentPageName={setCurrentPageName}/>
+    } else {
+        currentPageComponent = <NewAccount createAccount={createAccount} />
+    }
     return (
         <>
             <button onClick={login}>Login</button>
             <button onClick={test}>Test</button>
             <button onClick={logout}>Logout</button>
             <Header />
-            <NavBar />
-            <Main />
+            <NavBar setCurrentPageName={setCurrentPageName}/>
+            {currentPageComponent}
             <Footer />
         </>
     );

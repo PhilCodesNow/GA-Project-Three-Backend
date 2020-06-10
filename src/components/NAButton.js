@@ -4,10 +4,7 @@ export default class NAButton extends Component {
 	constructor(props) {
 		super(props);
 	}
-	changeState = event => {
-		return this.props.function(this.props.newAccount);
-	};
 	render() {
-		return <button onClick={this.changeState}>{this.props.newAccount}</button>;
+		return <button onClick={(event) => this.props.changeCurrentPageName('new account')}>Create New Account</button>;
 	}
 }

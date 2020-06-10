@@ -8,7 +8,7 @@ export default (props) => {
     return (
         <>
             <h1>New Account</h1>
-            <AccountForm></AccountForm>
+            <AccountForm createAccount={props.createAccount}/>
         </>
     );
 };
