@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import DetailsButton from './DetailsButton.js';
+// import DetailsButton from './DetailsButton.js';
 
 export default (props) => {
     return (

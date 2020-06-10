@@ -74,7 +74,7 @@ const App = (props) => {
     const handleCreate = async (data) =>
     {
         const response = await fetch ('http://localhost:3000/contacts', {
-            method: 'POST'
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -126,11 +126,12 @@ const logout = () => {
     token
     return (
         <>
-            
-            <h1>Hello World</h1>
-             <button onClick={login}>Login</button>
+            <button onClick={login}>Login</button>
             <button onClick={test}>Test</button>
             <button onClick={logout}>Logout</button>
+            <Header />
+            <NavBar />
+            <Main />
             <Footer />
         </>
     );
