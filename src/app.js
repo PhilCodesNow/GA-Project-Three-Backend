@@ -60,7 +60,7 @@ const getInfo = async() =>{
     setUserList(result);
 }
 const userCreate = async(data) =>{
-    const response = await fetch('https://ga-project-three-backend.herokuapp.com/users/new', {
+    const response = await fetch('https://ga-project-three-backend.herokuapp.com/users/create', {
         method: 'POST',
         headers: {
             'Content-type': 'application/json',
@@ -69,7 +69,6 @@ const userCreate = async(data) =>{
     })
     getInfo();
 }
-
     token
     return (
         <>
@@ -94,6 +93,7 @@ const userCreate = async(data) =>{
             </div>
         </>
     );
+    
 };
 
 const target = document.getElementById('app');

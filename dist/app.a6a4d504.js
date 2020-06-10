@@ -29513,7 +29513,7 @@ var App = function App(props) {
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return fetch('https://ga-project-three-backend.herokuapp.com/users/new', {
+              return fetch('https://ga-project-three-backend.herokuapp.com/users/create', {
                 method: 'POST',
                 headers: {
                   'Content-type': 'application/json'
@@ -29588,7 +29588,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61724" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61042" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
