@@ -28,7 +28,7 @@ export default (props) => {
             <button
             onClick={() =>{
                 props.handleSubmit(formData);
-                resetFormData(resetForm);
+                setFormData(formData);
             }}>Login</button>
         </>
     );

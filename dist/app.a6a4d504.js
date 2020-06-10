@@ -889,7 +889,87 @@ function _asyncToGenerator(fn) {
 }
 
 module.exports = _asyncToGenerator;
-},{}],"node_modules/object-assign/index.js":[function(require,module,exports) {
+},{}],"node_modules/@babel/runtime/helpers/arrayWithHoles.js":[function(require,module,exports) {
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+module.exports = _arrayWithHoles;
+},{}],"node_modules/@babel/runtime/helpers/iterableToArrayLimit.js":[function(require,module,exports) {
+function _iterableToArrayLimit(arr, i) {
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+module.exports = _iterableToArrayLimit;
+},{}],"node_modules/@babel/runtime/helpers/arrayLikeToArray.js":[function(require,module,exports) {
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+module.exports = _arrayLikeToArray;
+},{}],"node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js":[function(require,module,exports) {
+var arrayLikeToArray = require("./arrayLikeToArray");
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
+}
+
+module.exports = _unsupportedIterableToArray;
+},{"./arrayLikeToArray":"node_modules/@babel/runtime/helpers/arrayLikeToArray.js"}],"node_modules/@babel/runtime/helpers/nonIterableRest.js":[function(require,module,exports) {
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+module.exports = _nonIterableRest;
+},{}],"node_modules/@babel/runtime/helpers/slicedToArray.js":[function(require,module,exports) {
+var arrayWithHoles = require("./arrayWithHoles");
+
+var iterableToArrayLimit = require("./iterableToArrayLimit");
+
+var unsupportedIterableToArray = require("./unsupportedIterableToArray");
+
+var nonIterableRest = require("./nonIterableRest");
+
+function _slicedToArray(arr, i) {
+  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
+}
+
+module.exports = _slicedToArray;
+},{"./arrayWithHoles":"node_modules/@babel/runtime/helpers/arrayWithHoles.js","./iterableToArrayLimit":"node_modules/@babel/runtime/helpers/iterableToArrayLimit.js","./unsupportedIterableToArray":"node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js","./nonIterableRest":"node_modules/@babel/runtime/helpers/nonIterableRest.js"}],"node_modules/object-assign/index.js":[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -29074,87 +29154,7 @@ function _defineProperty(obj, key, value) {
 }
 
 module.exports = _defineProperty;
-},{}],"node_modules/@babel/runtime/helpers/arrayWithHoles.js":[function(require,module,exports) {
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
-module.exports = _arrayWithHoles;
-},{}],"node_modules/@babel/runtime/helpers/iterableToArrayLimit.js":[function(require,module,exports) {
-function _iterableToArrayLimit(arr, i) {
-  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
-
-  try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-
-module.exports = _iterableToArrayLimit;
-},{}],"node_modules/@babel/runtime/helpers/arrayLikeToArray.js":[function(require,module,exports) {
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-
-  return arr2;
-}
-
-module.exports = _arrayLikeToArray;
-},{}],"node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js":[function(require,module,exports) {
-var arrayLikeToArray = require("./arrayLikeToArray");
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
-}
-
-module.exports = _unsupportedIterableToArray;
-},{"./arrayLikeToArray":"node_modules/@babel/runtime/helpers/arrayLikeToArray.js"}],"node_modules/@babel/runtime/helpers/nonIterableRest.js":[function(require,module,exports) {
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
-module.exports = _nonIterableRest;
-},{}],"node_modules/@babel/runtime/helpers/slicedToArray.js":[function(require,module,exports) {
-var arrayWithHoles = require("./arrayWithHoles");
-
-var iterableToArrayLimit = require("./iterableToArrayLimit");
-
-var unsupportedIterableToArray = require("./unsupportedIterableToArray");
-
-var nonIterableRest = require("./nonIterableRest");
-
-function _slicedToArray(arr, i) {
-  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
-}
-
-module.exports = _slicedToArray;
-},{"./arrayWithHoles":"node_modules/@babel/runtime/helpers/arrayWithHoles.js","./iterableToArrayLimit":"node_modules/@babel/runtime/helpers/iterableToArrayLimit.js","./unsupportedIterableToArray":"node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js","./nonIterableRest":"node_modules/@babel/runtime/helpers/nonIterableRest.js"}],"src/components/Login.js":[function(require,module,exports) {
+},{}],"src/components/Login.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29260,7 +29260,7 @@ var _default = function _default(props) {
   }), /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
       props.handleSubmit(formData);
-      resetFormData(resetForm);
+      setFormData(formData);
     }
   }, "Login"));
 };
@@ -29345,6 +29345,8 @@ var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"))
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
 var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
@@ -29359,6 +29361,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var App = function App(props) {
   var baseURL = false ? 'http://localhost:3000/' : 'https://ga-project-three-backend.herokuapp.com';
+
+  var _React$useState = _react.default.useState(null),
+      _React$useState2 = (0, _slicedToArray2.default)(_React$useState, 2),
+      userList = _React$useState2[0],
+      setUserList = _React$useState2[1];
+
   var blank = {
     title: '',
     url: ''
@@ -29388,11 +29396,11 @@ var App = function App(props) {
             case 7:
               console.log('no token');
               _context.next = 10;
-              return fetch('http://localhost:3000/users/new', {
+              return fetch('https://ga-project-three-backend.herokuapp.com/users/new', {
                 method: 'post',
                 body: JSON.stringify({
-                  username: "Phil",
-                  password: "p"
+                  username: "The Phil",
+                  password: "password"
                 }),
                 headers: {
                   "Content-Type": "application/json"
@@ -29431,7 +29439,7 @@ var App = function App(props) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return fetch('http://localhost:3000/test', {
+              return fetch('https://ga-project-three-backend.herokuapp.com/test', {
                 method: "GET",
                 headers: {
                   "Authorization": "bearer ".concat(token)
@@ -29465,15 +29473,47 @@ var App = function App(props) {
     window.localStorage.removeItem('token');
   };
 
-  var userCreate = /*#__PURE__*/function () {
-    var _ref3 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3(data) {
-      var response;
+  var getInfo = /*#__PURE__*/function () {
+    var _ref3 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3() {
+      var response, result;
       return _regenerator.default.wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return fetch('http://localhost:3000/users/new', {
+              return fetch('https://ga-project-three-backend.herokuapp.com/users/');
+
+            case 2:
+              response = _context3.sent;
+              _context3.next = 5;
+              return response.json();
+
+            case 5:
+              result = _context3.sent;
+              setUserList(result);
+
+            case 7:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function getInfo() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  var userCreate = /*#__PURE__*/function () {
+    var _ref4 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee4(data) {
+      var response;
+      return _regenerator.default.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return fetch('https://ga-project-three-backend.herokuapp.com/users/new', {
                 method: 'POST',
                 headers: {
                   'Content-type': 'application/json'
@@ -29482,18 +29522,19 @@ var App = function App(props) {
               });
 
             case 2:
-              response = _context3.sent;
+              response = _context4.sent;
+              getInfo();
 
-            case 3:
+            case 4:
             case "end":
-              return _context3.stop();
+              return _context4.stop();
           }
         }
-      }, _callee3);
+      }, _callee4);
     }));
 
     return function userCreate(_x) {
-      return _ref3.apply(this, arguments);
+      return _ref4.apply(this, arguments);
     };
   }();
 
@@ -29508,14 +29549,18 @@ var App = function App(props) {
     initial: blank
   }), /*#__PURE__*/_react.default.createElement(_NewAccount.default, {
     initial: blank,
-    handlseSubmit: userCreate
-  }));
+    handleSubmit: userCreate
+  }), /*#__PURE__*/_react.default.createElement("div", null, userList ? userList.map(function (user, index) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: user._id
+    }, /*#__PURE__*/_react.default.createElement("p", null, user.username));
+  }) : 'there are no users currently'));
 };
 
 var target = document.getElementById('app');
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(App, null), target);
-},{"@babel/runtime/regenerator":"node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"node_modules/@babel/runtime/helpers/asyncToGenerator.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./components/Login.js":"src/components/Login.js","./components/NewAccount.js":"src/components/NewAccount.js","./css/style.scss":"src/css/style.scss"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"@babel/runtime/regenerator":"node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/slicedToArray":"node_modules/@babel/runtime/helpers/slicedToArray.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./components/Login.js":"src/components/Login.js","./components/NewAccount.js":"src/components/NewAccount.js","./css/style.scss":"src/css/style.scss"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -29543,7 +29588,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56841" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55467" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

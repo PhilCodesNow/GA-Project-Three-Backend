@@ -12,6 +12,8 @@ const App = (props) => {
     ? 'http://localhost:3000/'
     : 'https://ga-project-three-backend.herokuapp.com'
 
+    
+    const [userList, setUserList] = React.useState(null);
 
     const blank = {title:'', url:''};
 
@@ -25,9 +27,9 @@ const login = async () =>{
         console.log(token);
     }else{
         console.log('no token');
-        const response = await fetch('http://localhost:3000/users/new', {
+        const response = await fetch('https://ga-project-three-backend.herokuapp.com/users/new', {
         method: 'post',
-        body: JSON.stringify({username: "Phil", password: "p"}),
+        body: JSON.stringify({username: "The Phil", password: "password"}),
         headers: {"Content-Type": "application/json"}
         
     })
@@ -38,13 +40,13 @@ const login = async () =>{
     }
 }
 const test = async () =>{
-    const response = await fetch('http://localhost:3000/test', {
+    const response = await fetch('https://ga-project-three-backend.herokuapp.com/test', {
         method: "GET",
         headers: {
             "Authorization": `bearer ${token}`,
         },
     })
-    // console.log('response.json = ' + response.json());
+
     const result = await response.json();
     console.log(result);
 }
@@ -52,14 +54,20 @@ const logout = () => {
     token = ''
     window.localStorage.removeItem('token');
 }
+const getInfo = async() =>{
+    const response = await fetch('https://ga-project-three-backend.herokuapp.com/users/');
+    const result = await response.json();
+    setUserList(result);
+}
 const userCreate = async(data) =>{
-    const response = await fetch('http://localhost:3000/users/new', {
+    const response = await fetch('https://ga-project-three-backend.herokuapp.com/users/new', {
         method: 'POST',
         headers: {
             'Content-type': 'application/json',
         },
         body: JSON.stringify(data),
     })
+    getInfo();
 }
 
     token
@@ -71,7 +79,19 @@ const userCreate = async(data) =>{
             <button onClick={test}>Test</button>
             <button onClick={logout}>Logout</button>
             <Login initial={blank} />
-            <NewAccount initial={blank} handlseSubmit = {userCreate}/>
+            <NewAccount initial={blank} handleSubmit = {userCreate}/>
+            <div>
+                {
+                userList ? 
+                userList.map((user, index) =>{
+                    return (
+                        <div key={user._id}>
+                            <p>{user.username}</p>
+                        </div>
+                    )
+                }) : 'there are no users currently'
+                }
+            </div>
         </>
     );
 };
