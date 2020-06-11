@@ -1,15 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Login from './components/Login.js';
-import NewAccount from './components/NewAccount.js';
-import Main from './components/Main.js';
-import Header from './components/Header.js';
-import Footer from './components/Footer.js';
-import NavBar from './components/NavBar.js';
+import Login from './components/LoginPage.js';
+import NewAccount from './components/AccountPage.js';
+import MainPage from './components/MainPage.js';
+import DetailsPage from './components/DetailsPage.js';
+import NewContact from './components/NewContactPage';
 import './css/style.scss';
-import AccountForm from './components/AccountForm.js';
-
-
 
 
 const App = (props) => {
@@ -186,10 +182,7 @@ const logout = () => {
             
             <button onClick={test}>Test</button>
             <button onClick={logout}>Logout</button>
-            <Header />
-            <NavBar setCurrentPageName={setCurrentPageName}/>
-            {currentPageComponent}
-            <Footer />
+           <MainPage />
         </>
     );
 };
