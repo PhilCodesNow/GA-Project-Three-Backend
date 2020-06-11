@@ -12,7 +12,7 @@ export default (props) => {
             <LoginForm login={props.loginHandlers.login} />
             <NAButton setCurrentPageName={props.setCurrentPageName} />
             <div>
-                <img>SAMPLE IMAGE OF SITE</img>
+                <h1>SAMPLE IMAGE OF SITE</h1>
             </div>
         </>
     );
