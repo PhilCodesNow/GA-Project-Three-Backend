@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import DetailsButton from './DetailsButton.js';
+import DeleteContactButton from './DeleteContactButton.js';
 
 export default (props) => {
     return (
@@ -14,6 +15,7 @@ export default (props) => {
                         <h2>{contact.name}</h2>
                         {/* How was the link done in previous homework? Is there a separate show page? If so, where should we put that page?*/}
                         <DetailsButton />
+                        <DeleteContactButton/>
                       </li>
                   )
               })}

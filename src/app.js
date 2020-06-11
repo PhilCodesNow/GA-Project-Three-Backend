@@ -195,6 +195,19 @@ const createContact = async () =>{
     });
     getInfo(); //Update the list of Contacts
 }
+const deleteContact = async () =>{
+    console.log('Delete clicked');
+    let lastItem = contacts[0]
+    const response = await fetch (`${baseURL}/contacts/${lastItem._id}`,{
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `bearer ${token}`,
+        },
+
+    })
+    getInfo();
+}
     return (
         <>
                     <input
@@ -215,6 +228,7 @@ const createContact = async () =>{
             <button onClick={logout}>Logout</button>
             <Header />
             <button onClick={createContact}>Add A Contact! (hardcoded now)</button>
+            <button onClick={deleteContact}>Delete First Contact</button>
             <NavBar setCurrentPageName={setCurrentPageName}/>
             {currentPageComponent}
             <Footer />
