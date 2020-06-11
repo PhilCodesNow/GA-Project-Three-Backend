@@ -30091,6 +30091,56 @@ var App = function App(props) {
     });
   }
 
+  var createContact = /*#__PURE__*/function () {
+    var _ref6 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee6() {
+      var response;
+      return _regenerator.default.wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              console.log('created Contact');
+              _context6.next = 3;
+              return fetch("".concat(baseURL, "/contacts/new"), {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: "bearer ".concat(token)
+                },
+                body: JSON.stringify({
+                  "name": "this guy",
+                  "contactInfo": {
+                    "phone": "phone number",
+                    "email": "email account",
+                    "linkedinId": "Linked IN",
+                    "other": "cool guy"
+                  },
+                  "firstMeetContact": {
+                    "eventName": "meetup",
+                    "eventDate": "",
+                    "otherInfo": "Other Info Here"
+                  },
+                  "followUpDate": "",
+                  "conversationNotes": "notes here"
+                })
+              });
+
+            case 3:
+              response = _context6.sent;
+              getInfo(); //Update the list of Contacts
+
+            case 5:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      }, _callee6);
+    }));
+
+    return function createContact() {
+      return _ref6.apply(this, arguments);
+    };
+  }();
+
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     name: "username",
@@ -30107,7 +30157,9 @@ var App = function App(props) {
     onClick: test
   }, "Test"), /*#__PURE__*/_react.default.createElement("button", {
     onClick: logout
-  }, "Logout"), /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement(_NavBar.default, {
+  }, "Logout"), /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: createContact
+  }, "Add A Contact! (hardcoded now)"), /*#__PURE__*/_react.default.createElement(_NavBar.default, {
     setCurrentPageName: setCurrentPageName
   }), currentPageComponent, /*#__PURE__*/_react.default.createElement(_Footer.default, null));
 };
@@ -30143,7 +30195,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55846" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56199" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

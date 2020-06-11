@@ -168,6 +168,33 @@ const logout = () => {
     } else {
         currentPageComponent = <NewAccount createAccount={createAccount} />
     }
+const createContact = async () =>{
+    console.log('created Contact');
+    const response = await fetch (`${baseURL}/contacts/new`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `bearer ${token}`,
+        },
+        body: JSON.stringify({
+            "name": "this guy",
+                "contactInfo": {
+                    "phone": "phone number",
+                    "email": "email account",
+                    "linkedinId": "Linked IN",
+                    "other": "cool guy"
+                },
+                "firstMeetContact": {
+                    "eventName": "meetup",
+                    "eventDate": "",
+                    "otherInfo": "Other Info Here"
+                },
+                "followUpDate": "",
+                "conversationNotes": "notes here"
+        }),
+    });
+    getInfo(); //Update the list of Contacts
+}
     return (
         <>
                     <input
@@ -187,6 +214,7 @@ const logout = () => {
             <button onClick={test}>Test</button>
             <button onClick={logout}>Logout</button>
             <Header />
+            <button onClick={createContact}>Add A Contact! (hardcoded now)</button>
             <NavBar setCurrentPageName={setCurrentPageName}/>
             {currentPageComponent}
             <Footer />
