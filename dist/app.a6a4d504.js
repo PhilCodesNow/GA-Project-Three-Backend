@@ -29204,7 +29204,7 @@ var _default = function _default(props) {
   }), /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
       props.handleSubmit(formData);
-      resetFormData(resetForm);
+      setFormData(formData);
     }
   }, "Login"));
 };
@@ -29374,7 +29374,7 @@ var App = function App(props) {
   var token;
 
   var login = /*#__PURE__*/function () {
-    var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+    var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(user) {
       var response, newToken;
       return _regenerator.default.wrap(function _callee$(_context) {
         while (1) {
@@ -29396,12 +29396,13 @@ var App = function App(props) {
             case 7:
               console.log('no token');
               _context.next = 10;
-              return fetch('https://ga-project-three-backend.herokuapp.com/users/new', {
+              return fetch('http://localhose:3000/login', {
                 method: 'post',
                 body: JSON.stringify({
                   username: "The Phil",
                   password: "password"
                 }),
+                ///body: JSON.stringify({username: user.username, password: user.password}),
                 headers: {
                   "Content-Type": "application/json"
                 }
@@ -29426,7 +29427,7 @@ var App = function App(props) {
       }, _callee);
     }));
 
-    return function login() {
+    return function login(_x) {
       return _ref.apply(this, arguments);
     };
   }();
@@ -29533,7 +29534,7 @@ var App = function App(props) {
       }, _callee4);
     }));
 
-    return function userCreate(_x) {
+    return function userCreate(_x2) {
       return _ref4.apply(this, arguments);
     };
   }();
@@ -29546,7 +29547,8 @@ var App = function App(props) {
   }, "Test"), /*#__PURE__*/_react.default.createElement("button", {
     onClick: logout
   }, "Logout"), /*#__PURE__*/_react.default.createElement(_Login.default, {
-    initial: blank
+    initial: blank,
+    handleSubmit: login
   }), /*#__PURE__*/_react.default.createElement(_NewAccount.default, {
     initial: blank,
     handleSubmit: userCreate
@@ -29588,7 +29590,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61042" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64219" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
