@@ -889,23 +889,6 @@ function _asyncToGenerator(fn) {
 }
 
 module.exports = _asyncToGenerator;
-},{}],"node_modules/@babel/runtime/helpers/defineProperty.js":[function(require,module,exports) {
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-module.exports = _defineProperty;
 },{}],"node_modules/@babel/runtime/helpers/arrayWithHoles.js":[function(require,module,exports) {
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
@@ -29176,6 +29159,40 @@ var _default = function _default(props) {
 
 exports.default = _default;
 },{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"src/components/LoginForm.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = function _default(props) {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: props.login
+  }, /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "username"
+  }, "Username:"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "username"
+  }), /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "password"
+  }, "Password:"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "password",
+    name: "password"
+  }), /*#__PURE__*/_react.default.createElement("input", {
+    type: "submit",
+    value: "Log In"
+  })));
+};
+
+exports.default = _default;
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"src/components/LoginForm.js":[function(require,module,exports) {
 
 },{}],"src/components/Footer.js":[function(require,module,exports) {
 "use strict";
@@ -29192,7 +29209,7 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = function _default(props) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h1", null, "Footer"));
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h5", null, "Small Footer with our details"));
 };
 
 exports.default = _default;
@@ -29533,7 +29550,7 @@ var _default = function _default(props) {
 };
 
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./DetailsButton.js":"src/components/DetailsButton.js"}],"src/components/NavBar.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./DetailsButton.js":"src/components/DetailsButton.js"}],"src/components/LoginButton.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29541,18 +29558,124 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _reactDom = _interopRequireDefault(require("react-dom"));
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
+
+var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _default = function _default(props) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h3", null, "Home"), /*#__PURE__*/_react.default.createElement("h3", null, "User's Name"), /*#__PURE__*/_react.default.createElement("h3", null, "Logout"));
-};
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function () { var Super = (0, _getPrototypeOf2.default)(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2.default)(this, result); }; }
 
-exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+// Do we use this?
+var LoginButton = /*#__PURE__*/function (_Component) {
+  (0, _inherits2.default)(LoginButton, _Component);
+
+  var _super = _createSuper(LoginButton);
+
+  function LoginButton(props) {
+    (0, _classCallCheck2.default)(this, LoginButton);
+    return _super.call(this, props);
+  }
+
+  (0, _createClass2.default)(LoginButton, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/_react.default.createElement("button", {
+        onClick: function onClick() {
+          return props.setCurrentPageName('login');
+        }
+      }, "Log In");
+    }
+  }]);
+  return LoginButton;
+}(_react.Component);
+
+exports.default = LoginButton;
+},{"@babel/runtime/helpers/classCallCheck":"node_modules/@babel/runtime/helpers/classCallCheck.js","@babel/runtime/helpers/createClass":"node_modules/@babel/runtime/helpers/createClass.js","@babel/runtime/helpers/inherits":"node_modules/@babel/runtime/helpers/inherits.js","@babel/runtime/helpers/possibleConstructorReturn":"node_modules/@babel/runtime/helpers/possibleConstructorReturn.js","@babel/runtime/helpers/getPrototypeOf":"node_modules/@babel/runtime/helpers/getPrototypeOf.js","react":"node_modules/react/index.js"}],"src/components/NavBar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
+
+var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+var _LoginButton = _interopRequireDefault(require("./LoginButton.js"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function () { var Super = (0, _getPrototypeOf2.default)(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2.default)(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+// Do we use this? See login button comment
+var NavBar = /*#__PURE__*/function (_Component) {
+  (0, _inherits2.default)(NavBar, _Component);
+
+  var _super = _createSuper(NavBar);
+
+  function NavBar(props) {
+    (0, _classCallCheck2.default)(this, NavBar);
+    return _super.call(this, props);
+  }
+
+  (0, _createClass2.default)(NavBar, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+        className: "Navbar",
+        style: style
+      }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(NavButton, {
+        buttonName: "Home",
+        function: this.props.function
+      })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(NavButton, {
+        buttonName: "About Us",
+        function: this.props.function
+      })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(NavButton, {
+        buttonName: "Contact Us",
+        function: this.props.function
+      }))), /*#__PURE__*/_react.default.createElement(_LoginButton.default, {
+        setCurrentPageName: props.setCurrentPageName
+      }), /*#__PURE__*/_react.default.createElement("h3", null, this.props.username), /*#__PURE__*/_react.default.createElement("h3", null, "Logout"));
+    }
+  }]);
+  return NavBar;
+}(_react.Component);
+
+exports.default = NavBar;
+;
+},{"@babel/runtime/helpers/classCallCheck":"node_modules/@babel/runtime/helpers/classCallCheck.js","@babel/runtime/helpers/createClass":"node_modules/@babel/runtime/helpers/createClass.js","@babel/runtime/helpers/inherits":"node_modules/@babel/runtime/helpers/inherits.js","@babel/runtime/helpers/possibleConstructorReturn":"node_modules/@babel/runtime/helpers/possibleConstructorReturn.js","@babel/runtime/helpers/getPrototypeOf":"node_modules/@babel/runtime/helpers/getPrototypeOf.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./LoginButton.js":"src/components/LoginButton.js"}],"node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -29631,8 +29754,6 @@ var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"))
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
 var _react = _interopRequireDefault(require("react"));
@@ -29662,7 +29783,8 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var App = function App(props) {
-  var baseURL = true ? 'http://localhost:3000' : 'https://ga-project-three-backend.herokuapp.com'; //Create State
+  var baseURL = false ? 'http://localhost:3000/' : 'https://ga-project-three-backend.herokuapp.com';
+  var token; //Create State
   // hard coded contacts for debugging
 
   var _React$useState = _react.default.useState([{
@@ -29690,20 +29812,10 @@ var App = function App(props) {
   var _React$useState3 = _react.default.useState('main'),
       _React$useState4 = (0, _slicedToArray2.default)(_React$useState3, 2),
       currentPageName = _React$useState4[0],
-      setCurrentPageName = _React$useState4[1];
-
-  var _React$useState5 = _react.default.useState(''),
-      _React$useState6 = (0, _slicedToArray2.default)(_React$useState5, 2),
-      token = _React$useState6[0],
-      setToken = _React$useState6[1];
-
-  var _React$useState7 = _react.default.useState(''),
-      _React$useState8 = (0, _slicedToArray2.default)(_React$useState7, 2),
-      formData = _React$useState8[0],
-      setFormData = _React$useState8[1]; //Edit State
+      setCurrentPageName = _React$useState4[1]; //Edit State
 
 
-  var _React$useState9 = _react.default.useState({
+  var _React$useState5 = _react.default.useState({
     name: '',
     contactInfo: {
       phone: '',
@@ -29719,9 +29831,9 @@ var App = function App(props) {
     followUpDate: '',
     conversationNotes: ''
   }),
-      _React$useState10 = (0, _slicedToArray2.default)(_React$useState9, 2),
-      editContact = _React$useState10[0],
-      setEditContact = _React$useState10[1]; //Object For Blank Form For Create
+      _React$useState6 = (0, _slicedToArray2.default)(_React$useState5, 2),
+      editContact = _React$useState6[0],
+      setEditContact = _React$useState6[1]; //Object For Blank Form For Create
 
 
   var blank = {
@@ -29739,12 +29851,7 @@ var App = function App(props) {
     },
     followUpDate: '',
     conversationNotes: ''
-  };
-
-  var handleChange = function handleChange(event) {
-    setFormData(_objectSpread(_objectSpread({}, formData), {}, (0, _defineProperty2.default)({}, event.target.name, event.target.value)));
   }; //Function to get contacts from API
-
 
   var getInfo = /*#__PURE__*/function () {
     var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
@@ -29754,11 +29861,7 @@ var App = function App(props) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return fetch("".concat(baseURL, "/contacts/"), {
-                headers: {
-                  Authorization: "bearer ".concat(token)
-                }
-              });
+              return fetch("".concat(baseURL, "/contacts/index"));
 
             case 2:
               response = _context.sent;
@@ -29785,10 +29888,8 @@ var App = function App(props) {
 
 
   _react.default.useEffect(function () {
-    if (token) {
-      getInfo();
-    }
-  }, [token]); //handleCreate function
+    getInfo();
+  }, []); //handleCreate function
 
 
   var handleCreate = /*#__PURE__*/function () {
@@ -29799,11 +29900,10 @@ var App = function App(props) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return fetch("".concat(baseURL, "/contacts"), {
+              return fetch('http://localhost:3000/contacts', {
                 method: 'POST',
                 headers: {
-                  'Content-Type': 'application/json',
-                  Authorization: "bearer ".concat(token)
+                  'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
               });
@@ -29833,10 +29933,7 @@ var App = function App(props) {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return fetch("".concat(baseURL, "/contacts/").concat(id), {
-                method: 'DELETE',
-                Authorization: "bearer ".concat(token)
-              });
+              return fetch("http://localhost:3000/contacts");
 
             case 2:
               response = _context3.sent;
@@ -29861,29 +29958,42 @@ var App = function App(props) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
-              _context4.next = 2;
-              return fetch("".concat(baseURL, "/users"), {
-                method: 'POST',
-                body: JSON.stringify(formData),
+              console.log('start');
+
+              if (!window.localStorage.getItem('token')) {
+                _context4.next = 7;
+                break;
+              }
+
+              console.log('token exists');
+              token = JSON.parse(window.localStorage.getItem('token'));
+              console.log(token);
+              _context4.next = 17;
+              break;
+
+            case 7:
+              console.log('no token');
+              _context4.next = 10;
+              return fetch('http://localhost:3000/login', {
+                method: 'post',
+                body: JSON.stringify({
+                  username: "Phil",
+                  password: "p"
+                }),
                 headers: {
                   "Content-Type": "application/json"
                 }
               });
 
-            case 2:
+            case 10:
               response = _context4.sent;
-
-              if (!(response.status === 200)) {
-                _context4.next = 9;
-                break;
-              }
-
-              _context4.next = 6;
+              _context4.next = 13;
               return response.json();
 
-            case 6:
+            case 13:
               newToken = _context4.sent;
-              setToken(newToken);
+              console.log(newToken);
+              token = newToken;
               window.localStorage.setItem('token', JSON.stringify(token));
 
             case 9:
@@ -29907,7 +30017,7 @@ var App = function App(props) {
           switch (_context5.prev = _context5.next) {
             case 0:
               _context5.next = 2;
-              return fetch("".concat(baseURL, "/contacts"), {
+              return fetch('http://localhost:3000/test', {
                 method: "GET",
                 headers: {
                   "Authorization": "bearer ".concat(token)
@@ -29963,17 +30073,7 @@ var App = function App(props) {
     });
   }
 
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    name: "username",
-    value: formData.username,
-    onChange: handleChange
-  }), /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    name: "password",
-    value: formData.password,
-    onChange: handleChange
-  }), /*#__PURE__*/_react.default.createElement("button", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
     onClick: login
   }, "Login"), /*#__PURE__*/_react.default.createElement("button", {
     onClick: test
@@ -29987,7 +30087,7 @@ var App = function App(props) {
 var target = document.getElementById('app');
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(App, null), target);
-},{"@babel/runtime/regenerator":"node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/defineProperty":"node_modules/@babel/runtime/helpers/defineProperty.js","@babel/runtime/helpers/slicedToArray":"node_modules/@babel/runtime/helpers/slicedToArray.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./components/Login.js":"src/components/Login.js","./components/NewAccount.js":"src/components/NewAccount.js","./components/Main.js":"src/components/Main.js","./components/Header.js":"src/components/Header.js","./components/Footer.js":"src/components/Footer.js","./components/NavBar.js":"src/components/NavBar.js","./css/style.scss":"src/css/style.scss","./components/AccountForm.js":"src/components/AccountForm.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"@babel/runtime/regenerator":"node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/slicedToArray":"node_modules/@babel/runtime/helpers/slicedToArray.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./components/Login.js":"src/components/Login.js","./components/NewAccount.js":"src/components/NewAccount.js","./components/Main.js":"src/components/Main.js","./components/Header.js":"src/components/Header.js","./components/Footer.js":"src/components/Footer.js","./components/NavBar.js":"src/components/NavBar.js","./css/style.scss":"src/css/style.scss","./components/AccountForm.js":"src/components/AccountForm.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -30015,7 +30115,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49312" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54739" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
