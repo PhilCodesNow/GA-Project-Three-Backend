@@ -11,8 +11,8 @@ export default class NavBar extends Component {
     render() {
     return (
         <>
-			<div className="Navbar" style={style}>
-				<div>
+			<div className="Navbar">
+				{/*<div>
 					<NavButton buttonName="Home" function={this.props.function} />
 				</div>
 				<div>
@@ -20,9 +20,9 @@ export default class NavBar extends Component {
 				</div>
 				<div>
 					<NavButton buttonName="Contact Us" function={this.props.function} />
-				</div>
+                </div>*/}
             </div>
-            <LoginButton setCurrentPageName={props.setCurrentPageName} />
+            <LoginButton setCurrentPageName={this.props.setCurrentPageName} />
             <h3>{this.props.username}</h3>
             <h3>Logout</h3>
         </>

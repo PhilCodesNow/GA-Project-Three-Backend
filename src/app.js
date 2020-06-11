@@ -13,11 +13,11 @@ import AccountForm from './components/AccountForm.js';
 
 
 const App = (props) => {
-    const baseURL = false 
+    const baseURL = true 
     ? 'http://localhost:3000'
     : 'https://ga-project-three-backend.herokuapp.com'
 
-    let token;
+    
 
     //Create State
 
@@ -44,6 +44,8 @@ const App = (props) => {
         }
     ]);
     const [currentPageName, setCurrentPageName] = React.useState('main');
+    const [token, setToken] = React.useState('');
+    const [formData, setFormData] = React.useState('');
 
     //Edit State
     const [editContact, setEditContact] = React.useState({
@@ -81,9 +83,17 @@ const App = (props) => {
             conversationNotes:'',
     };
 
+    const handleChange = (event) => {
+        setFormData({ ...formData, [event.target.name]: event.target.value });
+    };
+
     //Function to get contacts from API
     const getInfo = async () => {
-        const response = await fetch (`${baseURL}/contacts/index`);
+        const response = await fetch (`${baseURL}/contacts/`, {
+            headers: {
+                Authorization: `bearer ${token}`
+            }
+        });
         const result = await response.json();
         console.log(result);
         setContacts(result);
@@ -91,8 +101,10 @@ const App = (props) => {
 
     //Get Contacts from API
     React.useEffect(() => {
-        getInfo();
-    }, []);
+        if (token) {
+            getInfo();
+        }
+    }, [token]);
 
     //handleCreate function
     const handleCreate = async (data) =>
@@ -101,6 +113,7 @@ const App = (props) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `bearer ${token}`,
             },
             body: JSON.stringify(data),
         });
@@ -108,42 +121,37 @@ const App = (props) => {
     };
 
     const handleDelete = async (id) => {
-        const response = await fetch (`${baseURL}/contacts`)
+        const response = await fetch (`${baseURL}/contacts/${id}`, {
+            method: 'DELETE',
+            Authorization: `bearer ${token}`,
+        })
     }
 
 const login = async () =>{
-    console.log('start');
-    if(window.localStorage.getItem('token')){
-        console.log('token exists');
-        token = JSON.parse(window.localStorage.getItem('token'))
-        console.log(token);
-    }else{
-        console.log('no token');
-        const response = await fetch(`${baseURL}/login`, {
-        method: 'post',
-        body: JSON.stringify({username: "Phil", password: "p"}),
-        headers: {"Content-Type": "application/json"}
-        
+    const response = await fetch(`${baseURL}/users`, {
+    method: 'POST',
+    body: JSON.stringify(formData),
+    headers: {"Content-Type": "application/json"}
     })
-    const newToken = await response.json()
-    console.log(newToken);
-    token = newToken;
-    window.localStorage.setItem('token', JSON.stringify(token));
+    if (response.status === 200) {
+        const newToken = await response.json()
+        setToken(newToken);
+        window.localStorage.setItem('token', JSON.stringify(token));
     }
 }
 const test = async () =>{
-    const response = await fetch(`${baseURL}/test`, {
+    const response = await fetch(`${baseURL}/contacts`, {
         method: "GET",
         headers: {
             "Authorization": `bearer ${token}`,
         },
     })
-    // console.log('response.json = ' + response.json());
+    // Fails at forbidden
     const result = await response.json();
     console.log(result);
 }
 const logout = () => {
-    token = ''
+    setToken('');
     window.localStorage.removeItem('token');
 }
 
@@ -162,7 +170,20 @@ const logout = () => {
     }
     return (
         <>
+                    <input
+                type="text"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+            />
+            <input
+                type="text"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+            />
             <button onClick={login}>Login</button>
+            
             <button onClick={test}>Test</button>
             <button onClick={logout}>Logout</button>
             <Header />
