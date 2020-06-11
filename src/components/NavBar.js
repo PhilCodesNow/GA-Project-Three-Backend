@@ -1,15 +1,31 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import LoginButton from './LoginButton.js'
 
 // Do we use this? See login button comment
 
-export default (props) => {
+export default class NavBar extends Component {
+    constructor(props) {
+		super(props);
+    }
+    render() {
     return (
         <>
-            <button onClick={() => props.setCurrentPageName('main')}>Home</button>
-            <LoginButton setCurrentPageName={setCurrentPageName} />
-            <h3>User's Name</h3>
+			<div className="Navbar" style={style}>
+				<div>
+					<NavButton buttonName="Home" function={this.props.function} />
+				</div>
+				<div>
+					<NavButton buttonName="About Us" function={this.props.function} />
+				</div>
+				<div>
+					<NavButton buttonName="Contact Us" function={this.props.function} />
+				</div>
+            </div>
+            <LoginButton setCurrentPageName={props.setCurrentPageName} />
+            <h3>{this.props.username}</h3>
             <h3>Logout</h3>
         </>
     );
+}
 };

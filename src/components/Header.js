@@ -6,7 +6,7 @@ export default (props) => {
         <>
             <div className='header'>
                 <h1>Title</h1>
-                <img>Logo</img>
+                <h1>Logo</h1>
             </div>
         </>
     );

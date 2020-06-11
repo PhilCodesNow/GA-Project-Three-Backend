@@ -4,7 +4,7 @@ export default class DetailsButton extends Component {
 	constructor(props) {
 		super(props);
 	}
-	changeState = event => {
+	changeState(event) {
 		return this.props.function(this.props.details);
 	};
 	render() {

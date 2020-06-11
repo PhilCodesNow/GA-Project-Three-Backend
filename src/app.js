@@ -20,7 +20,29 @@ const App = (props) => {
     let token;
 
     //Create State
-    const [contacts, setContacts] = React.useState(null);
+
+    // hard coded contacts for debugging
+    const [contacts, setContacts] = React.useState([
+        {
+            "_id": "5edfe2a321f3e237d03a1c24",
+            "name": "Philsterrrrrrrrrr",
+            "conversationNotes": "this guy is so cool",
+            "createdAt": "2020-06-09T19:27:31.630Z",
+            "updatedAt": "2020-06-09T19:27:31.630Z",
+            "__v": 0
+        },
+        {
+            "contactInfo": {
+                "email": "ryan@example.com"
+            },
+            "_id": "5edfe2e921f3e237d03a1c26",
+            "name": "Ryansterrrrrrrr",
+            "conversationNotes": "this guy is way way cool",
+            "createdAt": "2020-06-09T19:28:41.055Z",
+            "updatedAt": "2020-06-09T19:29:34.980Z",
+            "__v": 0
+        }
+    ]);
     const [currentPageName, setCurrentPageName] = React.useState('main');
 
     //Edit State
