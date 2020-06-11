@@ -1,35 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Header from './Header.js';
+import LoginForm from './LoginForm.js';
+import Footer from './Footer.js';
+import NAButton from './NAButton.js';
 
 export default (props) => {
-    const [formData, setFormData] = React.useState(props.initial);
-    React.useEffect(() =>{
-        setFormData(props.initial);
-    }, [props.initial]);
-    const handleChange = (event) =>{
-        setFormData({...formData, [event.target.name]: event.target.value})
-    }
+
     return (
         <>
-            <h1>Login Page</h1>
-            <input
-            type="text"
-            name="username"
-            value={FormData.username}
-            placeholder="Username"
-            onChange={handleChange}
-            ></input>
-            <input
-            type="text"
-            name="password"
-            value={FormData.password}
-            onChange={handleChange}
-            ></input>
-            <button
-            onClick={() =>{
-                props.handleSubmit(formData);
-                setFormData(formData);
-            }}>Login</button>
+            <LoginForm login={props.loginHandlers.login} />
+            <NAButton setCurrentPageName={props.setCurrentPageName} />
+            <div>
+                <img>SAMPLE IMAGE OF SITE</img>
+            </div>
         </>
     );
 };
