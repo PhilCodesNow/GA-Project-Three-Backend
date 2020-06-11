@@ -5,9 +5,7 @@ import Home from '../app';
 import NewContact from './NewContactPage';
 import LoginPage from './LoginPage';
 import Details from './DetailsPage';
-import Header from './Header';
-import NavBar from './NavBar';
-import Footer from './Footer';
+
 
 
 export default (props) => {
@@ -26,7 +24,7 @@ export default (props) => {
                     )
                 })}
                 </ul>
-                
+                <button>Delete Icon</button>
             </div>
         </>
     );

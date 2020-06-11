@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ContactForm from './ContactForm';
+import ContactForm from './ContactForm.js';
 
 export default (props) => {
     return (
