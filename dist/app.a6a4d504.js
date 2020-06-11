@@ -889,6 +889,23 @@ function _asyncToGenerator(fn) {
 }
 
 module.exports = _asyncToGenerator;
+},{}],"node_modules/@babel/runtime/helpers/defineProperty.js":[function(require,module,exports) {
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
 },{}],"node_modules/@babel/runtime/helpers/arrayWithHoles.js":[function(require,module,exports) {
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
@@ -29192,9 +29209,7 @@ var _default = function _default(props) {
 };
 
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"src/components/LoginForm.js":[function(require,module,exports) {
-
-},{}],"src/components/Footer.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"src/components/Footer.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29654,19 +29669,9 @@ var NavBar = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
-        className: "Navbar",
-        style: style
-      }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(NavButton, {
-        buttonName: "Home",
-        function: this.props.function
-      })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(NavButton, {
-        buttonName: "About Us",
-        function: this.props.function
-      })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(NavButton, {
-        buttonName: "Contact Us",
-        function: this.props.function
-      }))), /*#__PURE__*/_react.default.createElement(_LoginButton.default, {
-        setCurrentPageName: props.setCurrentPageName
+        className: "Navbar"
+      }), /*#__PURE__*/_react.default.createElement(_LoginButton.default, {
+        setCurrentPageName: this.props.setCurrentPageName
       }), /*#__PURE__*/_react.default.createElement("h3", null, this.props.username), /*#__PURE__*/_react.default.createElement("h3", null, "Logout"));
     }
   }]);
@@ -29754,6 +29759,8 @@ var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"))
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
 var _react = _interopRequireDefault(require("react"));
@@ -29783,8 +29790,7 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var App = function App(props) {
-  var baseURL = false ? 'http://localhost:3000/' : 'https://ga-project-three-backend.herokuapp.com';
-  var token; //Create State
+  var baseURL = true ? 'http://localhost:3000' : 'https://ga-project-three-backend.herokuapp.com'; //Create State
   // hard coded contacts for debugging
 
   var _React$useState = _react.default.useState([{
@@ -29812,10 +29818,20 @@ var App = function App(props) {
   var _React$useState3 = _react.default.useState('main'),
       _React$useState4 = (0, _slicedToArray2.default)(_React$useState3, 2),
       currentPageName = _React$useState4[0],
-      setCurrentPageName = _React$useState4[1]; //Edit State
+      setCurrentPageName = _React$useState4[1];
+
+  var _React$useState5 = _react.default.useState(''),
+      _React$useState6 = (0, _slicedToArray2.default)(_React$useState5, 2),
+      token = _React$useState6[0],
+      setToken = _React$useState6[1];
+
+  var _React$useState7 = _react.default.useState(''),
+      _React$useState8 = (0, _slicedToArray2.default)(_React$useState7, 2),
+      formData = _React$useState8[0],
+      setFormData = _React$useState8[1]; //Edit State
 
 
-  var _React$useState5 = _react.default.useState({
+  var _React$useState9 = _react.default.useState({
     name: '',
     contactInfo: {
       phone: '',
@@ -29831,9 +29847,9 @@ var App = function App(props) {
     followUpDate: '',
     conversationNotes: ''
   }),
-      _React$useState6 = (0, _slicedToArray2.default)(_React$useState5, 2),
-      editContact = _React$useState6[0],
-      setEditContact = _React$useState6[1]; //Object For Blank Form For Create
+      _React$useState10 = (0, _slicedToArray2.default)(_React$useState9, 2),
+      editContact = _React$useState10[0],
+      setEditContact = _React$useState10[1]; //Object For Blank Form For Create
 
 
   var blank = {
@@ -29851,7 +29867,12 @@ var App = function App(props) {
     },
     followUpDate: '',
     conversationNotes: ''
+  };
+
+  var handleChange = function handleChange(event) {
+    setFormData(_objectSpread(_objectSpread({}, formData), {}, (0, _defineProperty2.default)({}, event.target.name, event.target.value)));
   }; //Function to get contacts from API
+
 
   var getInfo = /*#__PURE__*/function () {
     var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
@@ -29861,7 +29882,11 @@ var App = function App(props) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return fetch("".concat(baseURL, "/contacts/index"));
+              return fetch("".concat(baseURL, "/contacts/"), {
+                headers: {
+                  Authorization: "bearer ".concat(token)
+                }
+              });
 
             case 2:
               response = _context.sent;
@@ -29888,8 +29913,10 @@ var App = function App(props) {
 
 
   _react.default.useEffect(function () {
-    getInfo();
-  }, []); //handleCreate function
+    if (token) {
+      getInfo();
+    }
+  }, [token]); //handleCreate function
 
 
   var handleCreate = /*#__PURE__*/function () {
@@ -29900,10 +29927,11 @@ var App = function App(props) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return fetch('http://localhost:3000/contacts', {
+              return fetch("".concat(baseURL, "/contacts"), {
                 method: 'POST',
                 headers: {
-                  'Content-Type': 'application/json'
+                  'Content-Type': 'application/json',
+                  Authorization: "bearer ".concat(token)
                 },
                 body: JSON.stringify(data)
               });
@@ -29933,7 +29961,10 @@ var App = function App(props) {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return fetch("http://localhost:3000/contacts");
+              return fetch("".concat(baseURL, "/contacts/").concat(id), {
+                method: 'DELETE',
+                Authorization: "bearer ".concat(token)
+              });
 
             case 2:
               response = _context3.sent;
@@ -29958,42 +29989,29 @@ var App = function App(props) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
-              console.log('start');
-
-              if (!window.localStorage.getItem('token')) {
-                _context4.next = 7;
-                break;
-              }
-
-              console.log('token exists');
-              token = JSON.parse(window.localStorage.getItem('token'));
-              console.log(token);
-              _context4.next = 17;
-              break;
-
-            case 7:
-              console.log('no token');
-              _context4.next = 10;
-              return fetch('http://localhost:3000/login', {
-                method: 'post',
-                body: JSON.stringify({
-                  username: "Phil",
-                  password: "p"
-                }),
+              _context4.next = 2;
+              return fetch("".concat(baseURL, "/users"), {
+                method: 'POST',
+                body: JSON.stringify(formData),
                 headers: {
                   "Content-Type": "application/json"
                 }
               });
 
-            case 10:
+            case 2:
               response = _context4.sent;
-              _context4.next = 13;
+
+              if (!(response.status === 200)) {
+                _context4.next = 9;
+                break;
+              }
+
+              _context4.next = 6;
               return response.json();
 
-            case 13:
+            case 6:
               newToken = _context4.sent;
-              console.log(newToken);
-              token = newToken;
+              setToken(newToken);
               window.localStorage.setItem('token', JSON.stringify(token));
 
             case 9:
@@ -30017,7 +30035,7 @@ var App = function App(props) {
           switch (_context5.prev = _context5.next) {
             case 0:
               _context5.next = 2;
-              return fetch('http://localhost:3000/test', {
+              return fetch("".concat(baseURL, "/contacts"), {
                 method: "GET",
                 headers: {
                   "Authorization": "bearer ".concat(token)
@@ -30073,7 +30091,17 @@ var App = function App(props) {
     });
   }
 
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "username",
+    value: formData.username,
+    onChange: handleChange
+  }), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "password",
+    value: formData.password,
+    onChange: handleChange
+  }), /*#__PURE__*/_react.default.createElement("button", {
     onClick: login
   }, "Login"), /*#__PURE__*/_react.default.createElement("button", {
     onClick: test
@@ -30087,7 +30115,7 @@ var App = function App(props) {
 var target = document.getElementById('app');
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(App, null), target);
-},{"@babel/runtime/regenerator":"node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/slicedToArray":"node_modules/@babel/runtime/helpers/slicedToArray.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./components/Login.js":"src/components/Login.js","./components/NewAccount.js":"src/components/NewAccount.js","./components/Main.js":"src/components/Main.js","./components/Header.js":"src/components/Header.js","./components/Footer.js":"src/components/Footer.js","./components/NavBar.js":"src/components/NavBar.js","./css/style.scss":"src/css/style.scss","./components/AccountForm.js":"src/components/AccountForm.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"@babel/runtime/regenerator":"node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/defineProperty":"node_modules/@babel/runtime/helpers/defineProperty.js","@babel/runtime/helpers/slicedToArray":"node_modules/@babel/runtime/helpers/slicedToArray.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./components/Login.js":"src/components/Login.js","./components/NewAccount.js":"src/components/NewAccount.js","./components/Main.js":"src/components/Main.js","./components/Header.js":"src/components/Header.js","./components/Footer.js":"src/components/Footer.js","./components/NavBar.js":"src/components/NavBar.js","./css/style.scss":"src/css/style.scss","./components/AccountForm.js":"src/components/AccountForm.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -30115,7 +30143,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54739" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55846" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
