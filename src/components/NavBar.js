@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import LoginButton from './LoginButton.js'
+import {Link} from 'react-router-dom'
+
 
 // Do we use this? See login button comment
 
@@ -12,19 +13,11 @@ export default class NavBar extends Component {
     return (
         <>
 			<div className="Navbar">
-				{/*<div>
-					<NavButton buttonName="Home" function={this.props.function} />
-				</div>
-				<div>
-					<NavButton buttonName="About Us" function={this.props.function} />
-				</div>
-				<div>
-					<NavButton buttonName="Contact Us" function={this.props.function} />
-                </div>*/}
+                <Link to="/">Home</Link>
+                <Link to="/login">Login</Link>
+                <Link to="/new-account">Create New Account</Link>"
             </div>
-            <LoginButton setCurrentPageName={this.props.setCurrentPageName} />
             <h3>{this.props.username}</h3>
-            <h3>Logout</h3>
         </>
     );
 }

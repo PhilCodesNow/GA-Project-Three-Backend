@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter, Switch} from 'react-router-dom'
 import Login from './components/LoginPage.js';
 import NewAccount from './components/AccountPage.js';
 import MainPage from './components/MainPage.js';
+import Layout from './components/Layout.js';
 import DetailsPage from './components/DetailsPage.js';
 import NewContact from './components/NewContactPage';
 import './css/style.scss';
+import { Route } from 'react-router-dom';
 
 
 const App = (props) => {
@@ -151,19 +154,6 @@ const logout = () => {
     window.localStorage.removeItem('token');
 }
 
-    let currentPageComponent;
-    if (currentPageName === 'main') {
-        currentPageComponent = <Main contacts={contacts}/>
-    } else if (currentPageName === 'login') {
-        const loginHandlers = {
-            login,
-            logout,
-        }
-        // Need to decide how and where we want logout button to appear
-        currentPageComponent = <Login loginHandlers={loginHandlers} setCurrentPageName={setCurrentPageName}/>
-    } else {
-        currentPageComponent = <NewAccount createAccount={createAccount} />
-    }
     return (
         <>
                     <input
@@ -182,7 +172,15 @@ const logout = () => {
             
             <button onClick={test}>Test</button>
             <button onClick={logout}>Logout</button>
-           <MainPage />
+            <BrowserRouter>
+                <Layout>
+                    <Switch>
+                        <Route exact path="/" component={(props) => <MainPage {...props} contacts={contacts} />} />
+                        <Route path="/login" component={Login} />
+                        <Route path="/new-account" component={NewAccount} />
+                    </Switch>
+                </Layout>
+            </BrowserRouter>
         </>
     );
 };

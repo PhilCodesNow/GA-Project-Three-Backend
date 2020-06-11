@@ -12,8 +12,6 @@ import Footer from './Footer';
 export default (props) => {
     return (
         <>
-            <Header />
-            <NavBar />
             <div className="detailsContainer">
                 <ul>
                 {props.contacts.map((contact, index) => {
@@ -28,7 +26,6 @@ export default (props) => {
                 })}
                 </ul>
             </div>
-            <Footer />
         </>
     );
 };
