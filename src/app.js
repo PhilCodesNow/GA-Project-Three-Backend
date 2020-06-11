@@ -97,7 +97,7 @@ const App = (props) => {
     //handleCreate function
     const handleCreate = async (data) =>
     {
-        const response = await fetch ('${baseURL}/contacts', {
+        const response = await fetch (`${baseURL}/contacts`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -119,7 +119,7 @@ const login = async () =>{
         console.log(token);
     }else{
         console.log('no token');
-        const response = await fetch('${baseURL}/login', {
+        const response = await fetch(`${baseURL}/login`, {
         method: 'post',
         body: JSON.stringify({username: "Phil", password: "p"}),
         headers: {"Content-Type": "application/json"}
@@ -132,7 +132,7 @@ const login = async () =>{
     }
 }
 const test = async () =>{
-    const response = await fetch('${baseURL}/test', {
+    const response = await fetch(`${baseURL}/test`, {
         method: "GET",
         headers: {
             "Authorization": `bearer ${token}`,
