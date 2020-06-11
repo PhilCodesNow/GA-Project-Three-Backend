@@ -15,8 +15,6 @@ export default class Details extends Component {
         const {contact} = this.state;
         return (
             <>
-                <Header />
-                <NavBar />
                 <div className="container">
                     <ul>
                         <li>{`Name: ${contact.name}`}</li>
@@ -35,7 +33,6 @@ export default class Details extends Component {
                         <li>{`Converstaion Notes: ${contact.conversationNotes}`}</li>
                     </ul>
                 </div>
-                <Footer />
             </>
         );
     } 

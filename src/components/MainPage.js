@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import Home from '../app';
 import NewContact from './NewContactPage';
 import LoginPage from './LoginPage';
@@ -12,8 +13,6 @@ import Footer from './Footer';
 export default (props) => {
     return (
         <>
-            <Header />
-            <NavBar />
             <div className="detailsContainer">
                 <ul>
                 {props.contacts.map((contact, index) => {
@@ -27,8 +26,8 @@ export default (props) => {
                     )
                 })}
                 </ul>
+                
             </div>
-            <Footer />
         </>
     );
 };

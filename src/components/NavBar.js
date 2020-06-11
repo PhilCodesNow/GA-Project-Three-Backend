@@ -1,30 +1,42 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import LoginButton from './LoginButton.js'
+import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
+import Home from './MainPage';
+import NewContact from './NewContactPage';
+import Login from './LoginPage';
+
 
 // Do we use this? See login button comment
 
 export default class NavBar extends Component {
     constructor(props) {
-		super(props);
+        super(props);
+        this.setState({
+            home: true,
+            newcontact: false,
+            login: false
+        });
     }
     render() {
     return (
         <>
-			<div className="Navbar" style={style}>
-				<div>
-					<NavButton buttonName="Home" function={this.props.function} />
-				</div>
-				<div>
-					<NavButton buttonName="About Us" function={this.props.function} />
-				</div>
-				<div>
-					<NavButton buttonName="Contact Us" function={this.props.function} />
-				</div>
+			<div className="navbarContainer">
+				<Router>
+                    <Switch>
+                        <Route exact path="/contact" component={Home} />
+                        <Route path="/newcontact" component={NewContact}/>
+                        <Route path="/login" component={Login} /> 
+                    </Switch>
+                    <div className="buttons">
+                        <button><Link to='/contact'>Home</Link></button>
+                        <button><Link to='/newcontact'>Create New Contact</Link></button>
+                        <h3>{this.props.username}</h3>
+                        <button><Link to='/login'>Login</Link></button>
+                        <button>Log Off</button>
+                    </div>
+                </Router>
             </div>
-            <LoginButton setCurrentPageName={props.setCurrentPageName} />
-            <h3>{this.props.username}</h3>
-            <h3>Logout</h3>
+            
         </>
     );
 }
