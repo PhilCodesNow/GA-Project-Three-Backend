@@ -10,11 +10,11 @@ import Login from './LoginPage';
 export default class NavBar extends Component {
     constructor(props) {
         super(props);
-        this.setState({
+        this.state = {
             home: true,
             newcontact: false,
             login: false
-        });
+        };
     }
     render() {
     return (
@@ -22,15 +22,15 @@ export default class NavBar extends Component {
 			<div className="navbarContainer">
 				<Router>
                     <Switch>
-                        <Route exact path="/contact" component={Home} />
+                        <Route exact path="/contacts" component={Home} />
                         <Route path="/newcontact" component={NewContact}/>
-                        <Route path="/login" component={Login} /> 
+                        <Route path="/users" component={Login} /> 
                     </Switch>
                     <div className="buttons">
-                        <button><Link to='/contact'>Home</Link></button>
+                        <button><Link to='/contacts'>Home</Link></button>
                         <button><Link to='/newcontact'>Create New Contact</Link></button>
                         <h3>{this.props.username}</h3>
-                        <button><Link to='/login'>Login</Link></button>
+                        <button><Link to='/users'>Login</Link></button>
                         <button>Log Off</button>
                     </div>
                 </Router>

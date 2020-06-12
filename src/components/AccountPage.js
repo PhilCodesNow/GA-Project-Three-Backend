@@ -4,7 +4,7 @@ import AccountForm from './AccountForm.js';
 export default (props) => {
     return (
         <>
-            <h1>New Account</h1>
+            <h1>Create A New Account</h1>
             <AccountForm createAccount={props.createAccount}/>
         </>
     );

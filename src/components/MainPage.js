@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
 
-export default class Home extends Component {
+export default class MainPage extends Component {
     constructor(props) {
         super(props);
-        this.setState({
+        this.state = {
             details: false,
-        });
+        };
     };
     
     render () {
+        const {contacts} = this.props;
+        console.log(this.props);
         return (
         <>
             <div className="detailsContainer">
                 <ul>
-                {props.contacts.map((contact, index) => {
+                {contact.map((contact, index) => {
                     return (
                         <li key={index}>
                             <h2>{contact.followUpDate}</h2>

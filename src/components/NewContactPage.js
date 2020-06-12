@@ -23,7 +23,7 @@ export default (props) => {
     return (
         <>
             <h2>New Contact</h2>
-            <ContactForm  initial={blank} handleSubmit={handleCreate}/>
+            <ContactForm  initial={blank} />
         </>
     );
 };
