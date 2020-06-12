@@ -204,7 +204,7 @@ const deleteContact = async () =>{
 }
     return (
         <>
-                    <input
+                    {/* <input
                 type="text"
                 name="username"
                 value={formData.username}
@@ -217,14 +217,15 @@ const deleteContact = async () =>{
                 onChange={handleChange}
             />
             <button onClick={login}>Login</button>
-            
             <button onClick={test}>Test</button>
             <button onClick={logout}>Logout</button>
+            <h1>^ Da Fake Login</h1> */}
+
             <Router>
                 <Switch>
                     <Route exact path="/" component={(props) => <MainPage {...props} contacts={contacts} />} />
                     <Route path="/contacts/:id" component={DetailsPage} />
-                    <Route path="/login" component={(props) => <LoginPage {...props} login={login} />} />
+                    <Route path="/login" component={(props) => <LoginPage formDataPass={formData.password} formDataUsername={formData.username} login={login} handleChange={handleChange}/>} />
                     <Route path="/new-account" component={NewAccount} />
                 </Switch>
             </Router>

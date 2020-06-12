@@ -4,14 +4,23 @@ import ReactDOM from 'react-dom';
 export default (props) => {
     return (
         <>
-            <form onSubmit={props.login}>
-                <label htmlFor="username">Username:</label>
-                <input type="text" name="username" />
-                <label htmlFor="password">Password:</label>
-                <input type="password" name="password" />
-                <input type="submit" value="Log In"/>
-            </form>
+            Username: 
+            <input
+                type="text"
+                name="username"
+                value={props.formDataUsername}
+                onChange={props.handleChange}
+            /><br/>
+            Password: 
+            <input
+                type="text"
+                name="password"
+                value={props.formDataPass}
+                onChange={props.handleChange}
+            />
+            <br/>
+            <button onClick={props.login}>Login</button>
             
         </>
     );
-};
+    }

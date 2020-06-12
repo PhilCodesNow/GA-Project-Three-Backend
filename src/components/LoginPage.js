@@ -12,7 +12,7 @@ export default class Login extends Component {
     render() {
         return (
             <>
-                <LoginForm login={this.props.login} />
+                <LoginForm login={this.props.login} formDataPass={this.props.formDataPass} formDataUsername={this.props.formDataUsername} handleChange={this.props.handleChange} inputUsername={this.props.inputUsername} inputPassword={this.props.inputPassword} inputButton={this.props.inputButton}/>
                     <button><Link to="/users/new">Create New Account</Link></button>
                 <div className="loginContainer">
                     <h1>SAMPLE IMAGE OF SITE</h1>
