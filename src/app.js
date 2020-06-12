@@ -1,21 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Login from './components/LoginPage.js';
+import LoginPage from './components/LoginPage.js';
 import NewAccount from './components/AccountPage.js';
-import Home from './components/MainPage.js';
+import MainPage from './components/MainPage.js';
 import DetailsPage from './components/DetailsPage.js';
-import NewContact from './components/NewContactPage.js';
-import Layout from './components/Layout.js';
 import './css/style.scss';
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
-
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 const App = (props) => {
     const baseURL = true 
     ? 'http://localhost:3000'
     : 'https://ga-project-three-backend.herokuapp.com'
 
-    
 
     //Create State
 
@@ -224,7 +220,14 @@ const deleteContact = async () =>{
             
             <button onClick={test}>Test</button>
             <button onClick={logout}>Logout</button>
-            <Layout login={login} handleCreate={handleCreate}/>
+            <Router>
+                <Switch>
+                    <Route exact path="/" component={(props) => <MainPage {...props} contacts={contacts} />} />
+                    <Route path="/contacts/:id" component={DetailsPage} />
+                    <Route path="/login" component={(props) => <LoginPage {...props} login={login} />} />
+                    <Route path="/new-account" component={NewAccount} />
+                </Switch>
+            </Router>
         </>
     );
 };

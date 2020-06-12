@@ -1,19 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
-import Details from './DetailsPage.js';
+import Home from '../app';
+import NewContact from './NewContactPage';
+import LoginPage from './LoginPage';
+import Details from './DetailsPage';
+import Header from './Header';
+import NavBar from './NavBar';
+import Footer from './Footer';
+import Layout from './Layout.js';
+import {Link} from 'react-router-dom';
 
-export default class Home extends React.Component {
-    constructor(props) {
-        super(props);
-        this.setState({
-            details: false,
-        });
-    };
-    
-    render () {
-        return (
+
+
+export default (props) => {
+    return (
         <>
+            <Layout>
             <div className="detailsContainer">
                 <ul>
                 {props.contacts.map((contact, index) => {
@@ -21,20 +23,14 @@ export default class Home extends React.Component {
                         <li key={index}>
                             <h2>{contact.followUpDate}</h2>
                             <h2>{contact.name}</h2>
-                            {/* How was the link done in previous homework? Is there a separate show page? If so, where should we put that page?*/}
-                        
+                            <Link to={`/contacts/${contact._id}`}>More Info</Link>
+                            <button onClick={() => props.deleteHandler(contact._id)}>✕</button>
                         </li>
                     )
                 })}
                 </ul>
-                <Router>
-                    <Switch>
-                        <Route></Route>
-                    </Switch>
-                <button><Link to={`/contact/${contact._id}`}>For More Details</Link></button>
-                </Router>
-                <button>Delete Icon</button>
             </div>
+            </Layout>
         </>
-    )};
+    );
 };
