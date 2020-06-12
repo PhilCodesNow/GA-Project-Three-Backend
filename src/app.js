@@ -153,19 +153,19 @@ const logout = () => {
     window.localStorage.removeItem('token');
 }
 
-    let currentPageComponent;
-    if (currentPageName === 'main') {
-        currentPageComponent = <Home contacts={contacts}/>
-    } else if (currentPageName === 'login') {
-        const loginHandlers = {
-            login,
-            logout,
-        }
-        // Need to decide how and where we want logout button to appear
-        currentPageComponent = <Login loginHandlers={loginHandlers} setCurrentPageName={setCurrentPageName}/>
-    } else {
-        currentPageComponent = <NewAccount createAccount={createAccount} />
-    }
+//     let currentPageComponent;
+//     if (currentPageName === 'main') {
+//         currentPageComponent = <Home contacts={contacts}/>
+//     } else if (currentPageName === 'login') {
+//         const loginHandlers = {
+//             login,
+//             logout,
+//         }
+//         // Need to decide how and where we want logout button to appear
+//         currentPageComponent = <Login loginHandlers={loginHandlers} setCurrentPageName={setCurrentPageName}/>
+//     } else {
+//         currentPageComponent = <NewAccount createAccount={createAccount} />
+//     }
 const createContact = async () =>{
     console.log('created Contact');
     const response = await fetch (`${baseURL}/contacts/new`, {
@@ -224,7 +224,7 @@ const deleteContact = async () =>{
             
             <button onClick={test}>Test</button>
             <button onClick={logout}>Logout</button>
-            <Layout />
+            <Layout login={login} handleCreate={handleCreate}/>
         </>
     );
 };

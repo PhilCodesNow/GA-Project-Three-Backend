@@ -7,7 +7,7 @@ export default (props) => {
     return (
         <>
             <Header />
-            <NavBar />
+            <NavBar login={props.login} handleCreate={props.handleCreate}/>
             {props.children}
             <Footer />
         </>

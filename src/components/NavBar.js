@@ -24,8 +24,8 @@ export default class NavBar extends Component {
 				<Router>
                     <Switch>
                         <Route exact path="/contact" component={Home} />
-                        <Route path="/newcontact" component={NewContact}/>
-                        <Route path="/login" component={Login} /> 
+                        <Route path="/newcontact" component={NewContact} handleCreate={this.props.handleCreate}/>
+                        <Route path="/login" component={Login} login={this.props.login}/> 
                     </Switch>
                     <div className="buttons">
                         <button><Link to='/contact'>Home</Link></button>
