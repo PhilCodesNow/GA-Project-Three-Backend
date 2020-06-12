@@ -3,11 +3,9 @@ import ReactDOM from 'react-dom';
 import Login from './components/LoginPage.js';
 import NewAccount from './components/AccountPage.js';
 import Home from './components/MainPage.js';
-import DetailsPage from './components/DetailsPage.js';
-import NewContact from './components/NewContactPage.js';
 import Layout from './components/Layout.js';
 import './css/style.scss';
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
+
 
 
 const App = (props) => {
