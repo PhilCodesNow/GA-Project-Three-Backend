@@ -174,13 +174,12 @@ const logout = () => {
             <button onClick={test}>Test</button>
             <button onClick={logout}>Logout</button>
             <BrowserRouter>
-                <Layout>
-                    <Switch>
-                        <Route exact path="/" component={(props) => <MainPage {...props} contacts={contacts} />} />
-                        <Route path="/login" component={(props) => <LoginPage {...props} loginHandlers={loginHandlers} />} />
-                        <Route path="/new-account" component={NewAccount} />
-                    </Switch>
-                </Layout>
+                <Switch>
+                    <Route exact path="/" component={(props) => <MainPage {...props} contacts={contacts} />} />
+                    <Route path="/info/:id" component={DetailsPage} />
+                    <Route path="/login" component={(props) => <LoginPage {...props} loginHandlers={loginHandlers} />} />
+                    <Route path="/new-account" component={NewAccount} />
+                </Switch>
             </BrowserRouter>
         </>
     );

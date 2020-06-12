@@ -12,6 +12,7 @@ import Footer from './Footer';
 export default (props) => {
     return (
         <>
+            <Layout>
             <div className="detailsContainer">
                 <ul>
                 {props.contacts.map((contact, index) => {
@@ -19,13 +20,15 @@ export default (props) => {
                         <li key={index}>
                             <h2>{contact.followUpDate}</h2>
                             <h2>{contact.name}</h2>
-                            {/* How was the link done in previous homework? Is there a separate show page? If so, where should we put that page?*/}
-                        
+                            <Link to={`/info/${contact._id}`}>More Info</Link>
+                            <Link to={`/edit/${contact._id}`}>✎</Link>
+                            <button onClick={() => props.deleteHandler(contact._id)}>✕</button>
                         </li>
                     )
                 })}
                 </ul>
             </div>
+            </Layout>
         </>
     );
 };
