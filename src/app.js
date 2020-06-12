@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Login from './components/Login.js';
-import NewAccount from './components/NewAccount.js';
-import Main from './components/Main.js';
+import Login from './components/LoginPage.js';
+import NewAccount from './components/AccountPage.js';
+import Home from './components/MainPage.js';
+import DetailsPage from './components/DetailsPage.js';
+import NewContact from './components/NewContactPage.js';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
-import NavBar from './components/NavBar.js';
+import Layout from './components/Layout.js';
 import './css/style.scss';
-import AccountForm from './components/AccountForm.js';
-
-
+import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 
 const App = (props) => {
@@ -157,7 +157,7 @@ const logout = () => {
 
     let currentPageComponent;
     if (currentPageName === 'main') {
-        currentPageComponent = <Main contacts={contacts}/>
+        currentPageComponent = <Home contacts={contacts}/>
     } else if (currentPageName === 'login') {
         const loginHandlers = {
             login,
@@ -226,12 +226,15 @@ const deleteContact = async () =>{
             
             <button onClick={test}>Test</button>
             <button onClick={logout}>Logout</button>
+
+
             <Header />
             <button onClick={createContact}>Add A Contact! (hardcoded now)</button>
             <button onClick={deleteContact}>Delete First Contact</button>
-            <NavBar setCurrentPageName={setCurrentPageName}/>
+           {/* <NavBar setCurrentPageName={setCurrentPageName}/> */}
             {currentPageComponent}
             <Footer />
+            <Layout />
         </>
     );
 };
