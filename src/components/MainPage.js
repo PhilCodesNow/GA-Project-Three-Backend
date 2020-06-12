@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
-import Home from '../app';
-import NewContact from './NewContactPage';
-import LoginPage from './LoginPage';
-import Details from './DetailsPage';
+import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
+import Details from './DetailsPage.js';
 
-
-
-export default (props) => {
-    return (
+export default class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.setState({
+            details: false,
+        });
+    };
+    
+    render () {
+        return (
         <>
             <div className="detailsContainer">
                 <ul>
@@ -24,8 +27,14 @@ export default (props) => {
                     )
                 })}
                 </ul>
+                <Router>
+                    <Switch>
+                        <Route></Route>
+                    </Switch>
+                <button><Link to={`/contact/${contact._id}`}>For More Details</Link></button>
+                </Router>
                 <button>Delete Icon</button>
             </div>
         </>
-    );
+    )};
 };
