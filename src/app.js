@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Switch} from 'react-router-dom'
-import Login from './components/LoginPage.js';
+import LoginPage from './components/LoginPage.js';
 import NewAccount from './components/AccountPage.js';
 import MainPage from './components/MainPage.js';
 import Layout from './components/Layout.js';
@@ -154,6 +154,7 @@ const logout = () => {
     window.localStorage.removeItem('token');
 }
 
+    const loginHandlers = {login}
     return (
         <>
                     <input
@@ -176,7 +177,7 @@ const logout = () => {
                 <Layout>
                     <Switch>
                         <Route exact path="/" component={(props) => <MainPage {...props} contacts={contacts} />} />
-                        <Route path="/login" component={Login} />
+                        <Route path="/login" component={(props) => <LoginPage {...props} loginHandlers={loginHandlers} />} />
                         <Route path="/new-account" component={NewAccount} />
                     </Switch>
                 </Layout>
