@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 export default (props) => {
     //State for form data
     const [formData, setFormData] = React.useState(props.initial);
-
+    
     //useEffect to update the data when state changes
     React.useEffect(() => {
         setFormData(props.initial);

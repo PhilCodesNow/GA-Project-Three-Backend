@@ -889,6 +889,23 @@ function _asyncToGenerator(fn) {
 }
 
 module.exports = _asyncToGenerator;
+},{}],"node_modules/@babel/runtime/helpers/defineProperty.js":[function(require,module,exports) {
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
 },{}],"node_modules/@babel/runtime/helpers/arrayWithHoles.js":[function(require,module,exports) {
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
@@ -29137,167 +29154,114 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"src/components/Header.js":[function(require,module,exports) {
-"use strict";
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"node_modules/@babel/runtime/helpers/classCallCheck.js":[function(require,module,exports) {
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
+module.exports = _classCallCheck;
+},{}],"node_modules/@babel/runtime/helpers/createClass.js":[function(require,module,exports) {
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
 
-var _react = _interopRequireDefault(require("react"));
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
 
-var _reactDom = _interopRequireDefault(require("react-dom"));
+module.exports = _createClass;
+},{}],"node_modules/@babel/runtime/helpers/setPrototypeOf.js":[function(require,module,exports) {
+function _setPrototypeOf(o, p) {
+  module.exports = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  return _setPrototypeOf(o, p);
+}
 
-var _default = function _default(props) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
-    className: "header"
-  }, /*#__PURE__*/_react.default.createElement("h1", null, "Title"), /*#__PURE__*/_react.default.createElement("h1", null, "Logo")));
-};
+module.exports = _setPrototypeOf;
+},{}],"node_modules/@babel/runtime/helpers/inherits.js":[function(require,module,exports) {
+var setPrototypeOf = require("./setPrototypeOf");
 
-exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"src/components/LoginForm.js":[function(require,module,exports) {
-"use strict";
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) setPrototypeOf(subClass, superClass);
+}
 
-var _react = _interopRequireDefault(require("react"));
+module.exports = _inherits;
+},{"./setPrototypeOf":"node_modules/@babel/runtime/helpers/setPrototypeOf.js"}],"node_modules/@babel/runtime/helpers/typeof.js":[function(require,module,exports) {
+function _typeof(obj) {
+  "@babel/helpers - typeof";
 
-var _reactDom = _interopRequireDefault(require("react-dom"));
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    module.exports = _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  return _typeof(obj);
+}
 
-var _default = function _default(props) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: props.login
-  }, /*#__PURE__*/_react.default.createElement("label", {
-    htmlFor: "username"
-  }, "Username:"), /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    name: "username"
-  }), /*#__PURE__*/_react.default.createElement("label", {
-    htmlFor: "password"
-  }, "Password:"), /*#__PURE__*/_react.default.createElement("input", {
-    type: "password",
-    name: "password"
-  }), /*#__PURE__*/_react.default.createElement("input", {
-    type: "submit",
-    value: "Log In"
-  })));
-};
+module.exports = _typeof;
+},{}],"node_modules/@babel/runtime/helpers/assertThisInitialized.js":[function(require,module,exports) {
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
 
-exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"src/components/Footer.js":[function(require,module,exports) {
-"use strict";
+  return self;
+}
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
+module.exports = _assertThisInitialized;
+},{}],"node_modules/@babel/runtime/helpers/possibleConstructorReturn.js":[function(require,module,exports) {
+var _typeof = require("../helpers/typeof");
 
-var _react = _interopRequireDefault(require("react"));
+var assertThisInitialized = require("./assertThisInitialized");
 
-var _reactDom = _interopRequireDefault(require("react-dom"));
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  return assertThisInitialized(self);
+}
 
-var _default = function _default(props) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h5", null, "Small Footer with our details"));
-};
+module.exports = _possibleConstructorReturn;
+},{"../helpers/typeof":"node_modules/@babel/runtime/helpers/typeof.js","./assertThisInitialized":"node_modules/@babel/runtime/helpers/assertThisInitialized.js"}],"node_modules/@babel/runtime/helpers/getPrototypeOf.js":[function(require,module,exports) {
+function _getPrototypeOf(o) {
+  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
 
-exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"src/components/LoginPage.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactDom = _interopRequireDefault(require("react-dom"));
-
-var _Header = _interopRequireDefault(require("./Header.js"));
-
-var _LoginForm = _interopRequireDefault(require("./LoginForm.js"));
-
-var _Footer = _interopRequireDefault(require("./Footer.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _default = function _default(props) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_LoginForm.default, {
-    login: props.loginHandlers.login
-  }), /*#__PURE__*/_react.default.createElement("div", {
-    className: "loginContainer"
-  }, /*#__PURE__*/_react.default.createElement("h1", null, "SAMPLE IMAGE OF SITE")));
-};
-
-exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./Header.js":"src/components/Header.js","./LoginForm.js":"src/components/LoginForm.js","./Footer.js":"src/components/Footer.js"}],"src/components/AccountForm.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactDom = _interopRequireDefault(require("react-dom"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _default = function _default(props) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: props.createAccount
-  }, /*#__PURE__*/_react.default.createElement("label", {
-    htmlFor: "username"
-  }, "New Username:"), /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    name: "username"
-  }), /*#__PURE__*/_react.default.createElement("label", {
-    htmlFor: "password"
-  }, "New Password:"), /*#__PURE__*/_react.default.createElement("input", {
-    type: "password",
-    name: "password"
-  }), /*#__PURE__*/_react.default.createElement("input", {
-    type: "submit",
-    value: "Create New User"
-  })));
-};
-
-exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"src/components/AccountPage.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactDom = _interopRequireDefault(require("react-dom"));
-
-var _AccountForm = _interopRequireDefault(require("./AccountForm.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _default = function _default(props) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h1", null, "New Account"), /*#__PURE__*/_react.default.createElement(_AccountForm.default, {
-    createAccount: props.createAccount
-  }));
-};
-
-exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./AccountForm.js":"src/components/AccountForm.js"}],"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":[function(require,module,exports) {
+module.exports = _getPrototypeOf;
+},{}],"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33268,23 +33232,173 @@ if ("development" !== "production") {
     style: _propTypes.default.object
   });
 }
-},{"react-router":"node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"node_modules/react/index.js","history":"node_modules/history/esm/history.js","prop-types":"node_modules/prop-types/index.js","tiny-warning":"node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"node_modules/@babel/runtime/helpers/defineProperty.js":[function(require,module,exports) {
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
+},{"react-router":"node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"node_modules/react/index.js","history":"node_modules/history/esm/history.js","prop-types":"node_modules/prop-types/index.js","tiny-warning":"node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"src/components/LoginForm.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = function _default(props) {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: props.login
+  }, /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "username"
+  }, "Username:"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "username"
+  }), /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "password"
+  }, "Password:"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "password",
+    name: "password"
+  }), /*#__PURE__*/_react.default.createElement("input", {
+    type: "submit",
+    value: "Log In"
+  })));
+};
+
+exports.default = _default;
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"src/components/AccountForm.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = function _default(props) {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: props.createAccount
+  }, /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "username"
+  }, "New Username:"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "username"
+  }), /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "password"
+  }, "New Password:"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "password",
+    name: "password"
+  }), /*#__PURE__*/_react.default.createElement("input", {
+    type: "submit",
+    value: "Create New User"
+  })));
+};
+
+exports.default = _default;
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"src/components/AccountPage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+var _AccountForm = _interopRequireDefault(require("./AccountForm.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = function _default(props) {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h1", null, "New Account"), /*#__PURE__*/_react.default.createElement(_AccountForm.default, {
+    createAccount: props.createAccount
+  }));
+};
+
+exports.default = _default;
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./AccountForm.js":"src/components/AccountForm.js"}],"src/components/LoginPage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
+
+var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _LoginForm = _interopRequireDefault(require("./LoginForm.js"));
+
+var _AccountPage = _interopRequireDefault(require("./AccountPage.js"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function () { var Super = (0, _getPrototypeOf2.default)(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2.default)(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+var Login = /*#__PURE__*/function (_Component) {
+  (0, _inherits2.default)(Login, _Component);
+
+  var _super = _createSuper(Login);
+
+  function Login(props) {
+    var _this;
+
+    (0, _classCallCheck2.default)(this, Login);
+    _this = _super.call(this, props);
+
+    _this.setState({
+      newaccount: false
     });
-  } else {
-    obj[key] = value;
+
+    return _this;
   }
 
-  return obj;
-}
+  (0, _createClass2.default)(Login, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_LoginForm.default, {
+        login: this.props.login
+      }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+        path: "/users/new",
+        component: _AccountPage.default
+      })), /*#__PURE__*/_react.default.createElement("button", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/users/new"
+      }, "Create New Account"))), /*#__PURE__*/_react.default.createElement("div", {
+        className: "loginContainer"
+      }, /*#__PURE__*/_react.default.createElement("h1", null, "SAMPLE IMAGE OF SITE")));
+    }
+  }]);
+  return Login;
+}(_react.Component);
 
-module.exports = _defineProperty;
+exports.default = Login;
+;
+},{"@babel/runtime/helpers/classCallCheck":"node_modules/@babel/runtime/helpers/classCallCheck.js","@babel/runtime/helpers/createClass":"node_modules/@babel/runtime/helpers/createClass.js","@babel/runtime/helpers/inherits":"node_modules/@babel/runtime/helpers/inherits.js","@babel/runtime/helpers/possibleConstructorReturn":"node_modules/@babel/runtime/helpers/possibleConstructorReturn.js","@babel/runtime/helpers/getPrototypeOf":"node_modules/@babel/runtime/helpers/getPrototypeOf.js","react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./LoginForm.js":"src/components/LoginForm.js","./AccountPage.js":"src/components/AccountPage.js"}],"src/components/MainPage.js":[function(require,module,exports) {
+
 },{}],"src/components/ContactForm.js":[function(require,module,exports) {
 "use strict";
 
@@ -33380,138 +33494,7 @@ var _default = function _default(props) {
 };
 
 exports.default = _default;
-},{"@babel/runtime/helpers/defineProperty":"node_modules/@babel/runtime/helpers/defineProperty.js","@babel/runtime/helpers/slicedToArray":"node_modules/@babel/runtime/helpers/slicedToArray.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"src/components/NewContactPage.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactDom = _interopRequireDefault(require("react-dom"));
-
-var _ContactForm = _interopRequireDefault(require("./ContactForm.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _default = function _default(props) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h2", null, "New Contact"), /*#__PURE__*/_react.default.createElement(_ContactForm.default, {
-    initial: blank,
-    handleSubmit: handleCreate
-  }));
-};
-
-exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./ContactForm.js":"src/components/ContactForm.js"}],"node_modules/@babel/runtime/helpers/classCallCheck.js":[function(require,module,exports) {
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-module.exports = _classCallCheck;
-},{}],"node_modules/@babel/runtime/helpers/createClass.js":[function(require,module,exports) {
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-module.exports = _createClass;
-},{}],"node_modules/@babel/runtime/helpers/setPrototypeOf.js":[function(require,module,exports) {
-function _setPrototypeOf(o, p) {
-  module.exports = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-module.exports = _setPrototypeOf;
-},{}],"node_modules/@babel/runtime/helpers/inherits.js":[function(require,module,exports) {
-var setPrototypeOf = require("./setPrototypeOf");
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) setPrototypeOf(subClass, superClass);
-}
-
-module.exports = _inherits;
-},{"./setPrototypeOf":"node_modules/@babel/runtime/helpers/setPrototypeOf.js"}],"node_modules/@babel/runtime/helpers/typeof.js":[function(require,module,exports) {
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    module.exports = _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    module.exports = _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-module.exports = _typeof;
-},{}],"node_modules/@babel/runtime/helpers/assertThisInitialized.js":[function(require,module,exports) {
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-module.exports = _assertThisInitialized;
-},{}],"node_modules/@babel/runtime/helpers/possibleConstructorReturn.js":[function(require,module,exports) {
-var _typeof = require("../helpers/typeof");
-
-var assertThisInitialized = require("./assertThisInitialized");
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return assertThisInitialized(self);
-}
-
-module.exports = _possibleConstructorReturn;
-},{"../helpers/typeof":"node_modules/@babel/runtime/helpers/typeof.js","./assertThisInitialized":"node_modules/@babel/runtime/helpers/assertThisInitialized.js"}],"node_modules/@babel/runtime/helpers/getPrototypeOf.js":[function(require,module,exports) {
-function _getPrototypeOf(o) {
-  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-module.exports = _getPrototypeOf;
-},{}],"src/components/DetailsPage.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/defineProperty":"node_modules/@babel/runtime/helpers/defineProperty.js","@babel/runtime/helpers/slicedToArray":"node_modules/@babel/runtime/helpers/slicedToArray.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"src/components/DetailsPage.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33561,7 +33544,7 @@ var Details = /*#__PURE__*/function (_Component) {
       var contact = this.state.contact;
       return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
         className: "container"
-      }, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, "Name: ".concat(contact.name)), /*#__PURE__*/_react.default.createElement("li", null, "Contact Info:"), /*#__PURE__*/_react.default.createElement("li", null, "Phone: ".concat(contact.contactInfo.phone)), /*#__PURE__*/_react.default.createElement("li", null, "Email: ".concat(contact.contactInfo.email)), /*#__PURE__*/_react.default.createElement("li", null, "LinkedIn: ".concat(contact.contactInfo.linkedinId)), /*#__PURE__*/_react.default.createElement("li", null, "Other: ".concat(contact.contactInfo.other)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("li", null, "First Met Contact Info:"), /*#__PURE__*/_react.default.createElement("li", null, "Event Name: ".concat(contact.firstMeetContact.eventName)), /*#__PURE__*/_react.default.createElement("li", null, "Event Date: ".concat(contact.firstMeetContact.eventDate)), /*#__PURE__*/_react.default.createElement("li", null, "Event Info: ".concat(contact.firstMeetContact.eventInfo)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("li", null, "Follow Up Date: ".concat(contact.followUpDate)), /*#__PURE__*/_react.default.createElement("li", null, "Converstaion Notes: ".concat(contact.conversationNotes)))), /*#__PURE__*/_react.default.createElement("div", {
+      }, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, "Name: ".concat(contact.name)), /*#__PURE__*/_react.default.createElement("li", null, "Contact Info:"), /*#__PURE__*/_react.default.createElement("li", null, "Phone: ".concat(contact.contactInfo.phone)), /*#__PURE__*/_react.default.createElement("li", null, "Email: ".concat(contact.contactInfo.email)), /*#__PURE__*/_react.default.createElement("li", null, "LinkedIn: ".concat(contact.contactInfo.linkedinId)), /*#__PURE__*/_react.default.createElement("li", null, "Other: ".concat(contact.contactInfo.other)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("li", null, "First Met Contact Info:"), /*#__PURE__*/_react.default.createElement("li", null, "Event Name: ".concat(contact.firstMeetContact.eventName)), /*#__PURE__*/_react.default.createElement("li", null, "Event Date: ".concat(contact.firstMeetContact.eventDate)), /*#__PURE__*/_react.default.createElement("li", null, "Event Info: ".concat(contact.firstMeetContact.eventInfo)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("li", null, "Follow Up Date: ".concat(contact.followUpDate)), /*#__PURE__*/_react.default.createElement("li", null, "Converstaion Notes: ".concat(contact.conversationNotes))), /*#__PURE__*/_react.default.createElement("button", null, "Edit Icon"), /*#__PURE__*/_react.default.createElement("button", null, "Delete Icon")), /*#__PURE__*/_react.default.createElement("div", {
         className: "editFormContainer"
       }, /*#__PURE__*/_react.default.createElement("h2", null, "Edit Contact"), /*#__PURE__*/_react.default.createElement(_ContactForm.default, {
         intial: editContact,
@@ -33574,7 +33557,68 @@ var Details = /*#__PURE__*/function (_Component) {
 
 exports.default = Details;
 ;
-},{"@babel/runtime/helpers/classCallCheck":"node_modules/@babel/runtime/helpers/classCallCheck.js","@babel/runtime/helpers/createClass":"node_modules/@babel/runtime/helpers/createClass.js","@babel/runtime/helpers/inherits":"node_modules/@babel/runtime/helpers/inherits.js","@babel/runtime/helpers/possibleConstructorReturn":"node_modules/@babel/runtime/helpers/possibleConstructorReturn.js","@babel/runtime/helpers/getPrototypeOf":"node_modules/@babel/runtime/helpers/getPrototypeOf.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./ContactForm.js":"src/components/ContactForm.js"}],"src/components/NavBar.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/classCallCheck":"node_modules/@babel/runtime/helpers/classCallCheck.js","@babel/runtime/helpers/createClass":"node_modules/@babel/runtime/helpers/createClass.js","@babel/runtime/helpers/inherits":"node_modules/@babel/runtime/helpers/inherits.js","@babel/runtime/helpers/possibleConstructorReturn":"node_modules/@babel/runtime/helpers/possibleConstructorReturn.js","@babel/runtime/helpers/getPrototypeOf":"node_modules/@babel/runtime/helpers/getPrototypeOf.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./ContactForm.js":"src/components/ContactForm.js"}],"src/components/NewContactPage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+var _ContactForm = _interopRequireDefault(require("./ContactForm.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = function _default(props) {
+  var blank = {
+    name: '',
+    contactInfo: {
+      phone: '',
+      email: '',
+      linkedinId: '',
+      other: ''
+    },
+    firstMeetContact: {
+      eventName: '',
+      eventDate: '',
+      otherInfo: ''
+    },
+    followUpDate: '',
+    conversationNotes: ''
+  };
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h2", null, "New Contact"), /*#__PURE__*/_react.default.createElement(_ContactForm.default, {
+    initial: blank,
+    handleSubmit: props.handleCreate
+  }));
+};
+
+exports.default = _default;
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./ContactForm.js":"src/components/ContactForm.js"}],"src/components/Header.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = function _default(props) {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "header"
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "Title"), /*#__PURE__*/_react.default.createElement("h1", null, "Logo")));
+};
+
+exports.default = _default;
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"src/components/NavBar.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33646,10 +33690,12 @@ var NavBar = /*#__PURE__*/function (_Component) {
         component: _MainPage.default
       }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
         path: "/newcontact",
-        component: _NewContactPage.default
+        component: _NewContactPage.default,
+        handleCreate: this.props.handleCreate
       }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
         path: "/login",
-        component: _LoginPage.default
+        component: _LoginPage.default,
+        login: this.props.login
       })), /*#__PURE__*/_react.default.createElement("div", {
         className: "buttons"
       }, /*#__PURE__*/_react.default.createElement("button", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
@@ -33666,7 +33712,7 @@ var NavBar = /*#__PURE__*/function (_Component) {
 
 exports.default = NavBar;
 ;
-},{"@babel/runtime/helpers/classCallCheck":"node_modules/@babel/runtime/helpers/classCallCheck.js","@babel/runtime/helpers/createClass":"node_modules/@babel/runtime/helpers/createClass.js","@babel/runtime/helpers/inherits":"node_modules/@babel/runtime/helpers/inherits.js","@babel/runtime/helpers/possibleConstructorReturn":"node_modules/@babel/runtime/helpers/possibleConstructorReturn.js","@babel/runtime/helpers/getPrototypeOf":"node_modules/@babel/runtime/helpers/getPrototypeOf.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./MainPage":"src/components/MainPage.js","./NewContactPage":"src/components/NewContactPage.js","./LoginPage":"src/components/LoginPage.js"}],"src/components/MainPage.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/classCallCheck":"node_modules/@babel/runtime/helpers/classCallCheck.js","@babel/runtime/helpers/createClass":"node_modules/@babel/runtime/helpers/createClass.js","@babel/runtime/helpers/inherits":"node_modules/@babel/runtime/helpers/inherits.js","@babel/runtime/helpers/possibleConstructorReturn":"node_modules/@babel/runtime/helpers/possibleConstructorReturn.js","@babel/runtime/helpers/getPrototypeOf":"node_modules/@babel/runtime/helpers/getPrototypeOf.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./MainPage":"src/components/MainPage.js","./NewContactPage":"src/components/NewContactPage.js","./LoginPage":"src/components/LoginPage.js"}],"src/components/Footer.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33678,36 +33724,14 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
-var _reactRouterDom = require("react-router-dom");
-
-var _app = _interopRequireDefault(require("../app"));
-
-var _NewContactPage = _interopRequireDefault(require("./NewContactPage"));
-
-var _LoginPage = _interopRequireDefault(require("./LoginPage"));
-
-var _DetailsPage = _interopRequireDefault(require("./DetailsPage"));
-
-var _Header = _interopRequireDefault(require("./Header"));
-
-var _NavBar = _interopRequireDefault(require("./NavBar"));
-
-var _Footer = _interopRequireDefault(require("./Footer"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = function _default(props) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
-    className: "detailsContainer"
-  }, /*#__PURE__*/_react.default.createElement("ul", null, props.contacts.map(function (contact, index) {
-    return /*#__PURE__*/_react.default.createElement("li", {
-      key: index
-    }, /*#__PURE__*/_react.default.createElement("h2", null, contact.followUpDate), /*#__PURE__*/_react.default.createElement("h2", null, contact.name));
-  }))));
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h5", null, "Small Footer with our details"));
 };
 
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../app":"src/app.js","./NewContactPage":"src/components/NewContactPage.js","./LoginPage":"src/components/LoginPage.js","./DetailsPage":"src/components/DetailsPage.js","./Header":"src/components/Header.js","./NavBar":"src/components/NavBar.js","./Footer":"src/components/Footer.js"}],"src/components/Layout.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"src/components/Layout.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33726,7 +33750,10 @@ var _Footer = _interopRequireDefault(require("./Footer"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = function _default(props) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement(_NavBar.default, null), props.children, /*#__PURE__*/_react.default.createElement(_Footer.default, null));
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement(_NavBar.default, {
+    login: props.login,
+    handleCreate: props.handleCreate
+  }), props.children, /*#__PURE__*/_react.default.createElement(_Footer.default, null));
 };
 
 exports.default = _default;
@@ -33809,6 +33836,8 @@ var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"))
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
 var _react = _interopRequireDefault(require("react"));
@@ -33833,9 +33862,12 @@ var _reactRouterDom = require("react-router-dom");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 var App = function App(props) {
-  var baseURL = false ? 'http://localhost:3000/' : 'https://ga-project-three-backend.herokuapp.com';
-  var token; //Create State
+  var baseURL = true ? 'http://localhost:3000' : 'https://ga-project-three-backend.herokuapp.com'; //Create State
   // hard coded contacts for debugging
 
   var _React$useState = _react.default.useState([{
@@ -33863,10 +33895,20 @@ var App = function App(props) {
   var _React$useState3 = _react.default.useState('main'),
       _React$useState4 = (0, _slicedToArray2.default)(_React$useState3, 2),
       currentPageName = _React$useState4[0],
-      setCurrentPageName = _React$useState4[1]; //Edit State
+      setCurrentPageName = _React$useState4[1];
+
+  var _React$useState5 = _react.default.useState(''),
+      _React$useState6 = (0, _slicedToArray2.default)(_React$useState5, 2),
+      token = _React$useState6[0],
+      setToken = _React$useState6[1];
+
+  var _React$useState7 = _react.default.useState(''),
+      _React$useState8 = (0, _slicedToArray2.default)(_React$useState7, 2),
+      formData = _React$useState8[0],
+      setFormData = _React$useState8[1]; //Edit State
 
 
-  var _React$useState5 = _react.default.useState({
+  var _React$useState9 = _react.default.useState({
     name: '',
     contactInfo: {
       phone: '',
@@ -33882,9 +33924,9 @@ var App = function App(props) {
     followUpDate: '',
     conversationNotes: ''
   }),
-      _React$useState6 = (0, _slicedToArray2.default)(_React$useState5, 2),
-      editContact = _React$useState6[0],
-      setEditContact = _React$useState6[1]; //Object For Blank Form For Create
+      _React$useState10 = (0, _slicedToArray2.default)(_React$useState9, 2),
+      editContact = _React$useState10[0],
+      setEditContact = _React$useState10[1]; //Object For Blank Form For Create
 
 
   var blank = {
@@ -33902,7 +33944,12 @@ var App = function App(props) {
     },
     followUpDate: '',
     conversationNotes: ''
+  };
+
+  var handleChange = function handleChange(event) {
+    setFormData(_objectSpread(_objectSpread({}, formData), {}, (0, _defineProperty2.default)({}, event.target.name, event.target.value)));
   }; //Function to get contacts from API
+
 
   var getInfo = /*#__PURE__*/function () {
     var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
@@ -33912,7 +33959,11 @@ var App = function App(props) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return fetch("".concat(baseURL, "/contacts/index"));
+              return fetch("".concat(baseURL, "/contacts/"), {
+                headers: {
+                  Authorization: "bearer ".concat(token)
+                }
+              });
 
             case 2:
               response = _context.sent;
@@ -33939,8 +33990,10 @@ var App = function App(props) {
 
 
   _react.default.useEffect(function () {
-    getInfo();
-  }, []); //handleCreate function
+    if (token) {
+      getInfo();
+    }
+  }, [token]); //handleCreate function
 
 
   var handleCreate = /*#__PURE__*/function () {
@@ -33951,10 +34004,11 @@ var App = function App(props) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return fetch('http://localhost:3000/contacts', {
+              return fetch("".concat(baseURL, "/contacts"), {
                 method: 'POST',
                 headers: {
-                  'Content-Type': 'application/json'
+                  'Content-Type': 'application/json',
+                  Authorization: "bearer ".concat(token)
                 },
                 body: JSON.stringify(data)
               });
@@ -33984,7 +34038,10 @@ var App = function App(props) {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return fetch("http://localhost:3000/contacts");
+              return fetch("".concat(baseURL, "/contacts/").concat(id), {
+                method: 'DELETE',
+                Authorization: "bearer ".concat(token)
+              });
 
             case 2:
               response = _context3.sent;
@@ -34009,45 +34066,32 @@ var App = function App(props) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
-              console.log('start');
-
-              if (!window.localStorage.getItem('token')) {
-                _context4.next = 7;
-                break;
-              }
-
-              console.log('token exists');
-              token = JSON.parse(window.localStorage.getItem('token'));
-              console.log(token);
-              _context4.next = 17;
-              break;
-
-            case 7:
-              console.log('no token');
-              _context4.next = 10;
-              return fetch('http://localhost:3000/login', {
-                method: 'post',
-                body: JSON.stringify({
-                  username: "Phil",
-                  password: "p"
-                }),
+              _context4.next = 2;
+              return fetch("".concat(baseURL, "/users"), {
+                method: 'POST',
+                body: JSON.stringify(formData),
                 headers: {
                   "Content-Type": "application/json"
                 }
               });
 
-            case 10:
+            case 2:
               response = _context4.sent;
-              _context4.next = 13;
+
+              if (!(response.status === 200)) {
+                _context4.next = 9;
+                break;
+              }
+
+              _context4.next = 6;
               return response.json();
 
-            case 13:
+            case 6:
               newToken = _context4.sent;
-              console.log(newToken);
-              token = newToken;
+              setToken(newToken);
               window.localStorage.setItem('token', JSON.stringify(token));
 
-            case 17:
+            case 9:
             case "end":
               return _context4.stop();
           }
@@ -34068,7 +34112,7 @@ var App = function App(props) {
           switch (_context5.prev = _context5.next) {
             case 0:
               _context5.next = 2;
-              return fetch('http://localhost:3000/test', {
+              return fetch("".concat(baseURL, "/contacts"), {
                 method: "GET",
                 headers: {
                   "Authorization": "bearer ".concat(token)
@@ -34098,45 +34142,134 @@ var App = function App(props) {
   }();
 
   var logout = function logout() {
-    token = '';
+    setToken('');
     window.localStorage.removeItem('token');
-  };
+  }; //     let currentPageComponent;
+  //     if (currentPageName === 'main') {
+  //         currentPageComponent = <Home contacts={contacts}/>
+  //     } else if (currentPageName === 'login') {
+  //         const loginHandlers = {
+  //             login,
+  //             logout,
+  //         }
+  //         // Need to decide how and where we want logout button to appear
+  //         currentPageComponent = <Login loginHandlers={loginHandlers} setCurrentPageName={setCurrentPageName}/>
+  //     } else {
+  //         currentPageComponent = <NewAccount createAccount={createAccount} />
+  //     }
 
-  var currentPageComponent;
 
-  if (currentPageName === 'main') {
-    currentPageComponent = /*#__PURE__*/_react.default.createElement(_MainPage.default, {
-      contacts: contacts
-    });
-  } else if (currentPageName === 'login') {
-    var loginHandlers = {
-      login: login,
-      logout: logout
-    }; // Need to decide how and where we want logout button to appear
+  var createContact = /*#__PURE__*/function () {
+    var _ref6 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee6() {
+      var response;
+      return _regenerator.default.wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              console.log('created Contact');
+              _context6.next = 3;
+              return fetch("".concat(baseURL, "/contacts/new"), {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: "bearer ".concat(token)
+                },
+                body: JSON.stringify({
+                  "name": "this guy",
+                  "contactInfo": {
+                    "phone": "phone number",
+                    "email": "email account",
+                    "linkedinId": "Linked IN",
+                    "other": "cool guy"
+                  },
+                  "firstMeetContact": {
+                    "eventName": "meetup",
+                    "eventDate": "",
+                    "otherInfo": "Other Info Here"
+                  },
+                  "followUpDate": "",
+                  "conversationNotes": "notes here"
+                })
+              });
 
-    currentPageComponent = /*#__PURE__*/_react.default.createElement(_LoginPage.default, {
-      loginHandlers: loginHandlers,
-      setCurrentPageName: setCurrentPageName
-    });
-  } else {
-    currentPageComponent = /*#__PURE__*/_react.default.createElement(_AccountPage.default, {
-      createAccount: createAccount
-    });
-  }
+            case 3:
+              response = _context6.sent;
+              getInfo(); //Update the list of Contacts
 
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
+            case 5:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      }, _callee6);
+    }));
+
+    return function createContact() {
+      return _ref6.apply(this, arguments);
+    };
+  }();
+
+  var deleteContact = /*#__PURE__*/function () {
+    var _ref7 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee7() {
+      var lastItem, response;
+      return _regenerator.default.wrap(function _callee7$(_context7) {
+        while (1) {
+          switch (_context7.prev = _context7.next) {
+            case 0:
+              console.log('Delete clicked');
+              lastItem = contacts[0];
+              _context7.next = 4;
+              return fetch("".concat(baseURL, "/contacts/").concat(lastItem._id), {
+                method: 'DELETE',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: "bearer ".concat(token)
+                }
+              });
+
+            case 4:
+              response = _context7.sent;
+              getInfo();
+
+            case 6:
+            case "end":
+              return _context7.stop();
+          }
+        }
+      }, _callee7);
+    }));
+
+    return function deleteContact() {
+      return _ref7.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "username",
+    value: formData.username,
+    onChange: handleChange
+  }), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "password",
+    value: formData.password,
+    onChange: handleChange
+  }), /*#__PURE__*/_react.default.createElement("button", {
     onClick: login
   }, "Login"), /*#__PURE__*/_react.default.createElement("button", {
     onClick: test
   }, "Test"), /*#__PURE__*/_react.default.createElement("button", {
     onClick: logout
-  }, "Logout"), /*#__PURE__*/_react.default.createElement(_Layout.default, null));
+  }, "Logout"), /*#__PURE__*/_react.default.createElement(_Layout.default, {
+    login: login,
+    handleCreate: handleCreate
+  }));
 };
 
 var target = document.getElementById('app');
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(App, null), target);
-},{"@babel/runtime/regenerator":"node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/slicedToArray":"node_modules/@babel/runtime/helpers/slicedToArray.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./components/LoginPage.js":"src/components/LoginPage.js","./components/AccountPage.js":"src/components/AccountPage.js","./components/MainPage.js":"src/components/MainPage.js","./components/DetailsPage.js":"src/components/DetailsPage.js","./components/NewContactPage.js":"src/components/NewContactPage.js","./components/Layout.js":"src/components/Layout.js","./css/style.scss":"src/css/style.scss","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"@babel/runtime/regenerator":"node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/defineProperty":"node_modules/@babel/runtime/helpers/defineProperty.js","@babel/runtime/helpers/slicedToArray":"node_modules/@babel/runtime/helpers/slicedToArray.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./components/LoginPage.js":"src/components/LoginPage.js","./components/AccountPage.js":"src/components/AccountPage.js","./components/MainPage.js":"src/components/MainPage.js","./components/DetailsPage.js":"src/components/DetailsPage.js","./components/NewContactPage.js":"src/components/NewContactPage.js","./components/Layout.js":"src/components/Layout.js","./css/style.scss":"src/css/style.scss","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -34164,7 +34297,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56122" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59601" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

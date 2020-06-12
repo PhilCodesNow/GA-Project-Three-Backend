@@ -11,11 +11,11 @@ import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 
 const App = (props) => {
-    const baseURL = false 
-    ? 'http://localhost:3000/'
+    const baseURL = true 
+    ? 'http://localhost:3000'
     : 'https://ga-project-three-backend.herokuapp.com'
 
-    let token;
+    
 
     //Create State
 
@@ -42,6 +42,8 @@ const App = (props) => {
         }
     ]);
     const [currentPageName, setCurrentPageName] = React.useState('main');
+    const [token, setToken] = React.useState('');
+    const [formData, setFormData] = React.useState('');
 
     //Edit State
     const [editContact, setEditContact] = React.useState({
@@ -79,9 +81,17 @@ const App = (props) => {
             conversationNotes:'',
     };
 
+    const handleChange = (event) => {
+        setFormData({ ...formData, [event.target.name]: event.target.value });
+    };
+
     //Function to get contacts from API
     const getInfo = async () => {
-        const response = await fetch (`${baseURL}/contacts/index`);
+        const response = await fetch (`${baseURL}/contacts/`, {
+            headers: {
+                Authorization: `bearer ${token}`
+            }
+        });
         const result = await response.json();
         console.log(result);
         setContacts(result);
@@ -89,16 +99,19 @@ const App = (props) => {
 
     //Get Contacts from API
     React.useEffect(() => {
-        getInfo();
-    }, []);
+        if (token) {
+            getInfo();
+        }
+    }, [token]);
 
     //handleCreate function
     const handleCreate = async (data) =>
     {
-        const response = await fetch ('http://localhost:3000/contacts', {
+        const response = await fetch (`${baseURL}/contacts`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `bearer ${token}`,
             },
             body: JSON.stringify(data),
         });
@@ -106,64 +119,112 @@ const App = (props) => {
     };
 
     const handleDelete = async (id) => {
-        const response = await fetch (`http://localhost:3000/contacts`)
+        const response = await fetch (`${baseURL}/contacts/${id}`, {
+            method: 'DELETE',
+            Authorization: `bearer ${token}`,
+        })
     }
 
 const login = async () =>{
-    console.log('start');
-    if(window.localStorage.getItem('token')){
-        console.log('token exists');
-        token = JSON.parse(window.localStorage.getItem('token'))
-        console.log(token);
-    }else{
-        console.log('no token');
-        const response = await fetch('http://localhost:3000/login', {
-        method: 'post',
-        body: JSON.stringify({username: "Phil", password: "p"}),
-        headers: {"Content-Type": "application/json"}
-        
+    const response = await fetch(`${baseURL}/users`, {
+    method: 'POST',
+    body: JSON.stringify(formData),
+    headers: {"Content-Type": "application/json"}
     })
-    const newToken = await response.json()
-    console.log(newToken);
-    token = newToken;
-    window.localStorage.setItem('token', JSON.stringify(token));
+    if (response.status === 200) {
+        const newToken = await response.json()
+        setToken(newToken);
+        window.localStorage.setItem('token', JSON.stringify(token));
     }
 }
 const test = async () =>{
-    const response = await fetch('http://localhost:3000/test', {
+    const response = await fetch(`${baseURL}/contacts`, {
         method: "GET",
         headers: {
             "Authorization": `bearer ${token}`,
         },
     })
-    // console.log('response.json = ' + response.json());
+    // Fails at forbidden
     const result = await response.json();
     console.log(result);
 }
 const logout = () => {
-    token = ''
+    setToken('');
     window.localStorage.removeItem('token');
 }
 
-    let currentPageComponent;
-    if (currentPageName === 'main') {
-        currentPageComponent = <Home contacts={contacts}/>
-    } else if (currentPageName === 'login') {
-        const loginHandlers = {
-            login,
-            logout,
-        }
-        // Need to decide how and where we want logout button to appear
-        currentPageComponent = <Login loginHandlers={loginHandlers} setCurrentPageName={setCurrentPageName}/>
-    } else {
-        currentPageComponent = <NewAccount createAccount={createAccount} />
-    }
+//     let currentPageComponent;
+//     if (currentPageName === 'main') {
+//         currentPageComponent = <Home contacts={contacts}/>
+//     } else if (currentPageName === 'login') {
+//         const loginHandlers = {
+//             login,
+//             logout,
+//         }
+//         // Need to decide how and where we want logout button to appear
+//         currentPageComponent = <Login loginHandlers={loginHandlers} setCurrentPageName={setCurrentPageName}/>
+//     } else {
+//         currentPageComponent = <NewAccount createAccount={createAccount} />
+//     }
+const createContact = async () =>{
+    console.log('created Contact');
+    const response = await fetch (`${baseURL}/contacts/new`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `bearer ${token}`,
+        },
+        body: JSON.stringify({
+            "name": "this guy",
+                "contactInfo": {
+                    "phone": "phone number",
+                    "email": "email account",
+                    "linkedinId": "Linked IN",
+                    "other": "cool guy"
+                },
+                "firstMeetContact": {
+                    "eventName": "meetup",
+                    "eventDate": "",
+                    "otherInfo": "Other Info Here"
+                },
+                "followUpDate": "",
+                "conversationNotes": "notes here"
+        }),
+    });
+    getInfo(); //Update the list of Contacts
+}
+const deleteContact = async () =>{
+    console.log('Delete clicked');
+    let lastItem = contacts[0]
+    const response = await fetch (`${baseURL}/contacts/${lastItem._id}`,{
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `bearer ${token}`,
+        },
+
+    })
+    getInfo();
+}
     return (
         <>
+                    <input
+                type="text"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+            />
+            <input
+                type="text"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+            />
             <button onClick={login}>Login</button>
+            
             <button onClick={test}>Test</button>
             <button onClick={logout}>Logout</button>
-            <Layout />
+            <Layout login={login} handleCreate={handleCreate}/>
         </>
     );
 };
