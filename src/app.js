@@ -5,8 +5,6 @@ import NewAccount from './components/AccountPage.js';
 import Home from './components/MainPage.js';
 import DetailsPage from './components/DetailsPage.js';
 import NewContact from './components/NewContactPage.js';
-import Header from './components/Header.js';
-import Footer from './components/Footer.js';
 import Layout from './components/Layout.js';
 import './css/style.scss';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
@@ -226,14 +224,6 @@ const deleteContact = async () =>{
             
             <button onClick={test}>Test</button>
             <button onClick={logout}>Logout</button>
-
-
-            <Header />
-            <button onClick={createContact}>Add A Contact! (hardcoded now)</button>
-            <button onClick={deleteContact}>Delete First Contact</button>
-           {/* <NavBar setCurrentPageName={setCurrentPageName}/> */}
-            {currentPageComponent}
-            <Footer />
             <Layout />
         </>
     );

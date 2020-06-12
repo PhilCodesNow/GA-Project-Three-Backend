@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
 import Details from './DetailsPage.js';
@@ -16,7 +16,7 @@ export default class Home extends Component {
         <>
             <div className="detailsContainer">
                 <ul>
-                {this.props.contacts.map((contact, index) => {
+                {props.contacts.map((contact, index) => {
                     return (
                         <li key={index}>
                             <h2>{contact.followUpDate}</h2>
