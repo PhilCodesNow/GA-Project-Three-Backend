@@ -1,7 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
-import Details from './DetailsPage.js';
 
 export default class Home extends Component {
     constructor(props) {

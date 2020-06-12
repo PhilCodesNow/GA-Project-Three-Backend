@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import ContactForm from './ContactForm.js';
 
 export default class Details extends Component {
