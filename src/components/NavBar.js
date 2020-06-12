@@ -23,12 +23,12 @@ export default class NavBar extends Component {
 				<Router>
                     <Switch>
                         <Route exact path="/contacts" component={Home} />
-                        <Route path="/newcontact" component={NewContact}/>
+                        <Route path="/contacts/new" component={NewContact}/>
                         <Route path="/users" component={Login} /> 
                     </Switch>
                     <div className="buttons">
                         <button><Link to='/contacts'>Home</Link></button>
-                        <button><Link to='/newcontact'>Create New Contact</Link></button>
+                        <button><Link to='/contacts/new'>Create New Contact</Link></button>
                         <h3>{this.props.username}</h3>
                         <button><Link to='/users'>Login</Link></button>
                         <button>Log Off</button>

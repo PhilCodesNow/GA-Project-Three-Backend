@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
+import Details from './DetailsPage.js';
 
 export default class MainPage extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ export default class MainPage extends Component {
         <>
             <div className="detailsContainer">
                 <ul>
-                {contact.map((contact, index) => {
+                {contacts.map((contact, index) => {
                     return (
                         <li key={index}>
                             <h2>{contact.followUpDate}</h2>
@@ -31,7 +32,7 @@ export default class MainPage extends Component {
                     <Switch>
                         <Route></Route>
                     </Switch>
-                <button><Link to={`/contact/${contact._id}`}>For More Details</Link></button>
+                <button><Link to={`/contacts/${contact._id}`}>For More Details</Link></button>
                 </Router>
                 <button>Delete Icon</button>
             </div>
