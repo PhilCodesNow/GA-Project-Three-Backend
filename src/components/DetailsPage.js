@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import ContactForm from './ContactForm.js';
+import Layout from './Layout.js'
 
 export default class Details extends Component {
     constructor(props) {
@@ -11,6 +12,7 @@ export default class Details extends Component {
         const {contact} = this.state;
         return (
             <>
+                <Layout>
                 <div className="container">
                     <ul>
                         <li>{`Name: ${contact.name}`}</li>
@@ -35,6 +37,7 @@ export default class Details extends Component {
                     <h2>Edit Contact</h2>
                     <ContactForm intial={editContact} handleSubmit={handleEdit} />
                 </div>
+                </Layout>
             </>
         );
     } 
