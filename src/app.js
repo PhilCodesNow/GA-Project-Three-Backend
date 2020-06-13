@@ -115,7 +115,6 @@ const UnRoutedApp = (props) => {
             },
             body: JSON.stringify(data),
         });
-        setContactCreated(true)
         props.history.push('/')
         // getInfo(); //Update the list of Contacts
     };
@@ -125,6 +124,18 @@ const UnRoutedApp = (props) => {
             method: 'DELETE',
             Authorization: `bearer ${token}`,
         })
+    }
+    
+    const handleEdit = async (data) => {
+        const response = await fetch(`${baseURL}/contacts/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `bearer ${token}`,
+            },
+            body: JSON.stringify(data)
+        })
+        props.history.push(`/contacts/${id}`)
     }
 
 const login = async (formData) =>{
@@ -236,7 +247,7 @@ const deleteContact = async (id) =>{
                 <Switch>
                     <Route exact path="/" component={(props) => <MainPage {...props} contacts={contacts} deleteHandler={deleteContact}/>} />
                     <Route path="/contacts/new" component={(props) => <NewContactPage {...props} handleCreate={handleCreate}/>} />
-                    <Route path="/contacts/:id" component={(props) => <DetailsPage {...props} contacts={contacts} />} />
+                    <Route path="/contacts/:id" component={(props) => <DetailsPage {...props} contacts={contacts} handleEdit={handleEdit}/>} />
                     <Route path="/login" component={(props) => <LoginPage login={login} />} />
                     <Route path="/new-account" component={NewAccount} />
                 </Switch>
