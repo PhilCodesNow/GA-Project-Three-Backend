@@ -5,9 +5,12 @@ import NewAccount from './components/AccountPage.js';
 import MainPage from './components/MainPage.js';
 import DetailsPage from './components/DetailsPage.js';
 import './css/style.scss';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 
 const App = (props) => {
+
+    // Might need to bind
+
     const baseURL = true 
     ? 'http://localhost:3000'
     : 'https://ga-project-three-backend.herokuapp.com'
@@ -39,7 +42,6 @@ const App = (props) => {
     ]);
     const [currentPageName, setCurrentPageName] = React.useState('main');
     const [token, setToken] = React.useState('');
-    const [formData, setFormData] = React.useState('');
 
     //Edit State
     const [editContact, setEditContact] = React.useState({
@@ -58,6 +60,7 @@ const App = (props) => {
             followUpDate: '',
             conversationNotes:'',
     });
+    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
     //Object For Blank Form For Create
     const blank = {
@@ -77,20 +80,21 @@ const App = (props) => {
             conversationNotes:'',
     };
 
-    const handleChange = (event) => {
-        setFormData({ ...formData, [event.currentTarget.name]: event.currentTarget.value });
-    };
-
     //Function to get contacts from API
     const getInfo = async () => {
-        const response = await fetch (`${baseURL}/contacts/`, {
-            headers: {
-                Authorization: `bearer ${token}`
-            }
-        });
-        const result = await response.json();
-        console.log(result);
-        setContacts(result);
+        console.log('getting info')
+        try {
+                const response = await fetch (`${baseURL}/contacts/`, {
+                headers: {
+                    Authorization: `bearer ${token}`
+                }
+            });
+            const result = await response.json();
+            console.log(result);
+            setContacts(result);
+        } catch (e) {
+            console.error(e.msg)
+        }
     };
 
     //Get Contacts from API
@@ -121,7 +125,8 @@ const App = (props) => {
         })
     }
 
-const login = async () =>{
+const login = async (formData) =>{
+    console.log(`${baseURL}/users`)
     const response = await fetch(`${baseURL}/users`, {
     method: 'POST',
     body: JSON.stringify(formData),
@@ -131,6 +136,10 @@ const login = async () =>{
         const newToken = await response.json()
         setToken(newToken);
         window.localStorage.setItem('token', JSON.stringify(token));
+        setIsLoggedIn(true);
+    } else {
+        console.error('HTTP error ' + response.status)
+        console.error(await response.text());
     }
 }
 const test = async () =>{
@@ -202,6 +211,8 @@ const deleteContact = async () =>{
     })
     getInfo();
 }
+
+
     return (
         <>
                     {/* <input
@@ -222,10 +233,11 @@ const deleteContact = async () =>{
             <h1>^ Da Fake Login</h1> */}
 
             <Router>
+                {isLoggedIn ? <Redirect to="/" /> : null}
                 <Switch>
                     <Route exact path="/" component={(props) => <MainPage {...props} contacts={contacts} />} />
                     <Route path="/contacts/:id" component={DetailsPage} />
-                    <Route path="/login" component={(props) => <LoginPage formDataPass={formData.password} formDataUsername={formData.username} login={login} handleChange={handleChange}/>} />
+                    <Route path="/login" component={(props) => <LoginPage login={login} />} />
                     <Route path="/new-account" component={NewAccount} />
                 </Switch>
             </Router>
