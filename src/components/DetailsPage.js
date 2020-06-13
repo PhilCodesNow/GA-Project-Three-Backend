@@ -44,8 +44,7 @@ export default class Details extends Component {
                 </div>
                 <div className="editFormContainer">
                     <h2>Edit Contact</h2>
-                    {/* Not yet implemented */}
-                    {/* <ContactForm intial={editContact} handleSubmit={handleEdit} /> */}
+                    <ContactForm intial={editContact} handleSubmit={handleEdit} />
                 </div>
                 </Layout>
             </>

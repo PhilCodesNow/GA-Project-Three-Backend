@@ -200,17 +200,16 @@ const createContact = async () =>{
     });
     getInfo(); //Update the list of Contacts
 }
-const deleteContact = async () =>{
+const deleteContact = async (id) =>{
     console.log('Delete clicked');
-    let lastItem = contacts[0]
-    const response = await fetch (`${baseURL}/contacts/${lastItem._id}`,{
+    const response = await fetch (`${baseURL}/contacts/${id}`,{
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `bearer ${token}`,
         },
-
     })
+        console.log(await response.json())
     getInfo();
 }
 
@@ -235,7 +234,7 @@ const deleteContact = async () =>{
             <h1>^ Da Fake Login</h1> */}
 
                 <Switch>
-                    <Route exact path="/" component={(props) => <MainPage {...props} contacts={contacts} />} />
+                    <Route exact path="/" component={(props) => <MainPage {...props} contacts={contacts} deleteHandler={deleteContact}/>} />
                     <Route path="/contacts/new" component={(props) => <NewContactPage {...props} handleCreate={handleCreate}/>} />
                     <Route path="/contacts/:id" component={(props) => <DetailsPage {...props} contacts={contacts} />} />
                     <Route path="/login" component={(props) => <LoginPage login={login} />} />
