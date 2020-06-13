@@ -16,6 +16,7 @@ export default (props) => {
     return (
         <>
             <Layout>
+            <Link to="/contacts/new" >Add new contact</Link>
             <div className="detailsContainer">
                 <ul>
                 {props.contacts.map((contact, index) => {

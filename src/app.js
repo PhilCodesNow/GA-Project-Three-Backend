@@ -5,10 +5,11 @@ import NewAccount from './components/AccountPage.js';
 import MainPage from './components/MainPage.js';
 import DetailsPage from './components/DetailsPage.js';
 import './css/style.scss';
-import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch, withRouter } from 'react-router-dom';
 import NewContactPage from './components/NewContactPage.js';
 
-const App = (props) => {
+
+const UnRoutedApp = (props) => {
 
     // Might need to bind
 
@@ -43,6 +44,7 @@ const App = (props) => {
     ]);
     const [currentPageName, setCurrentPageName] = React.useState('main');
     const [token, setToken] = React.useState('');
+    const [contactCreated, setContactCreated] = React.useState(false);
 
     //Edit State
     const [editContact, setEditContact] = React.useState({
@@ -83,7 +85,6 @@ const App = (props) => {
 
     //Function to get contacts from API
     const getInfo = async () => {
-        console.log('getting info')
         try {
                 const response = await fetch (`${baseURL}/contacts/`, {
                 headers: {
@@ -91,7 +92,6 @@ const App = (props) => {
                 }
             });
             const result = await response.json();
-            console.log(result);
             setContacts(result);
         } catch (e) {
             console.error(e.msg)
@@ -106,8 +106,7 @@ const App = (props) => {
     }, [token]);
 
     //handleCreate function
-    const handleCreate = async (data) =>
-    {
+    const handleCreate = async (data) => {
         const response = await fetch (`${baseURL}/contacts`, {
             method: 'POST',
             headers: {
@@ -116,7 +115,9 @@ const App = (props) => {
             },
             body: JSON.stringify(data),
         });
-        getInfo(); //Update the list of Contacts
+        setContactCreated(true)
+        props.history.push('/')
+        // getInfo(); //Update the list of Contacts
     };
 
     const handleDelete = async (id) => {
@@ -127,7 +128,6 @@ const App = (props) => {
     }
 
 const login = async (formData) =>{
-    console.log(`${baseURL}/users`)
     const response = await fetch(`${baseURL}/users`, {
     method: 'POST',
     body: JSON.stringify(formData),
@@ -137,7 +137,8 @@ const login = async (formData) =>{
         const newToken = await response.json()
         setToken(newToken);
         window.localStorage.setItem('token', JSON.stringify(token));
-        setIsLoggedIn(true);
+        setIsLoggedIn(true)
+        props.history.push('/')
     } else {
         console.error('HTTP error ' + response.status)
         console.error(await response.text());
@@ -233,8 +234,6 @@ const deleteContact = async () =>{
             <button onClick={logout}>Logout</button>
             <h1>^ Da Fake Login</h1> */}
 
-            <Router>
-                {isLoggedIn ? <Redirect to="/" /> : null}
                 <Switch>
                     <Route exact path="/" component={(props) => <MainPage {...props} contacts={contacts} />} />
                     <Route path="/contacts/new" component={(props) => <NewContactPage {...props} handleCreate={handleCreate}/>} />
@@ -242,10 +241,13 @@ const deleteContact = async () =>{
                     <Route path="/login" component={(props) => <LoginPage login={login} />} />
                     <Route path="/new-account" component={NewAccount} />
                 </Switch>
-            </Router>
         </>
     );
 };
+
+// Needed to get props.history inside app
+const RoutedApp = withRouter(UnRoutedApp)
+const App = (props) => <Router><RoutedApp/></Router>;
 
 const target = document.getElementById('app');
 ReactDOM.render(<App />, target);
