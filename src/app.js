@@ -148,23 +148,25 @@ const login = async (formData) =>{
         const newToken = await response.json()
         setToken(newToken);
         window.localStorage.setItem('token', JSON.stringify(token));
-        setIsLoggedIn(true)
         props.history.push('/')
     } else {
         console.error('HTTP error ' + response.status)
         console.error(await response.text());
     }
 }
-const test = async () =>{
-    const response = await fetch(`${baseURL}/contacts`, {
-        method: "GET",
-        headers: {
-            "Authorization": `bearer ${token}`,
-        },
+const createAccount = async (formData) => {
+    console.log(formData)
+    const response = await fetch(`${baseURL}/users/new`, {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {"Content-Type": "application/json"}
     })
-    // Fails at forbidden
-    const result = await response.json();
-    console.log(result);
+    if (response.status === 200) {
+        props.history.push('/login');
+    } else {
+        console.error('HTTP error ' + response.status)
+        console.error(await response.text());
+    }
 }
 const logout = () => {
     setToken('');
@@ -249,7 +251,7 @@ const deleteContact = async (id) =>{
                     <Route path="/contacts/new" component={(props) => <NewContactPage {...props} handleCreate={handleCreate}/>} />
                     <Route path="/contacts/:id" component={(props) => <DetailsPage {...props} contacts={contacts} handleEdit={handleEdit}/>} />
                     <Route path="/login" component={(props) => <LoginPage login={login} />} />
-                    <Route path="/new-account" component={NewAccount} />
+                    <Route path="/new-account" component={(props) => <NewAccount {...props} createAccount={createAccount} />} />
                 </Switch>
         </>
     );
