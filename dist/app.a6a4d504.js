@@ -33270,13 +33270,11 @@ var _default = function _default(props) {
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, "Username:", /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     name: "username",
-    key: props.username,
     value: props.formDataUsername,
     onChange: props.handleChange
   }), /*#__PURE__*/_react.default.createElement("br", null), "Password:", /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     name: "password",
-    key: props.password,
     value: props.formDataPass,
     onChange: props.handleChange
   }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("button", {
@@ -33329,11 +33327,9 @@ var Login = /*#__PURE__*/function (_Component) {
 
     (0, _classCallCheck2.default)(this, Login);
     _this = _super.call(this, props);
-
-    _this.setState({
+    _this.state = {
       newaccount: false
-    });
-
+    };
     return _this;
   }
 
@@ -33621,13 +33617,11 @@ var NavBar = /*#__PURE__*/function (_Component) {
 
     (0, _classCallCheck2.default)(this, NavBar);
     _this = _super.call(this, props);
-
-    _this.setState({
+    _this.state = {
       home: true,
       newcontact: false,
       login: false
-    });
-
+    };
     return _this;
   }
 
@@ -34352,7 +34346,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63627" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57213" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

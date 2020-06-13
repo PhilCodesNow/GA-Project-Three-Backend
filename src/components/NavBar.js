@@ -11,7 +11,7 @@ import Login from './LoginPage';
 export default class NavBar extends Component {
     constructor(props) {
         super(props);
-        this.setState({
+        this.state = ({
             home: true,
             newcontact: false,
             login: false
