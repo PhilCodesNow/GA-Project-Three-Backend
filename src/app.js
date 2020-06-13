@@ -236,7 +236,7 @@ const deleteContact = async () =>{
                 {isLoggedIn ? <Redirect to="/" /> : null}
                 <Switch>
                     <Route exact path="/" component={(props) => <MainPage {...props} contacts={contacts} />} />
-                    <Route path="/contacts/:id" component={DetailsPage} />
+                    <Route path="/contacts/:id" component={(props) => <DetailsPage {...props} contacts={contacts} />} />
                     <Route path="/login" component={(props) => <LoginPage login={login} />} />
                     <Route path="/new-account" component={NewAccount} />
                 </Switch>
