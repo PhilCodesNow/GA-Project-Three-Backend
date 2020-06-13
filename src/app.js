@@ -78,7 +78,7 @@ const App = (props) => {
     };
 
     const handleChange = (event) => {
-        setFormData({ ...formData, [event.target.name]: event.target.value });
+        setFormData({ ...formData, [event.currentTarget.name]: event.currentTarget.value });
     };
 
     //Function to get contacts from API

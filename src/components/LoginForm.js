@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 export default (props) => {
     return (
-        <>
+        <form>
             Username: 
             <input
                 type="text"
@@ -20,7 +20,6 @@ export default (props) => {
             />
             <br/>
             <button onClick={props.login}>Login</button>
-            
-        </>
+        </form>
     );
     }

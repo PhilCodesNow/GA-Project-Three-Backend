@@ -33267,7 +33267,7 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = function _default(props) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, "Username:", /*#__PURE__*/_react.default.createElement("input", {
+  return /*#__PURE__*/_react.default.createElement("form", null, "Username:", /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     name: "username",
     value: props.formDataUsername,
@@ -33991,7 +33991,7 @@ var App = function App(props) {
   };
 
   var handleChange = function handleChange(event) {
-    setFormData(_objectSpread(_objectSpread({}, formData), {}, (0, _defineProperty2.default)({}, event.target.name, event.target.value)));
+    setFormData(_objectSpread(_objectSpread({}, formData), {}, (0, _defineProperty2.default)({}, event.currentTarget.name, event.currentTarget.value)));
   }; //Function to get contacts from API
 
 
@@ -34346,7 +34346,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57213" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50164" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
