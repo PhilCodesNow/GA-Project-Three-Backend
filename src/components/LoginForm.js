@@ -8,6 +8,7 @@ export default (props) => {
             <input
                 type="text"
                 name="username"
+                key={props.username}
                 value={props.formDataUsername}
                 onChange={props.handleChange}
             /><br/>
@@ -15,6 +16,7 @@ export default (props) => {
             <input
                 type="text"
                 name="password"
+                key={props.password}
                 value={props.formDataPass}
                 onChange={props.handleChange}
             />
