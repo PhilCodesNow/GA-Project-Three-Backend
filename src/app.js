@@ -55,7 +55,7 @@ const UnRoutedApp = (props) => {
             body: JSON.stringify(data),
         });
         props.history.push('/')
-        // getInfo(); //Update the list of Contacts
+        getInfo(); //Update the list of Contacts
     };
     
     const handleEdit = async (data) => {

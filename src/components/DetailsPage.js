@@ -8,6 +8,22 @@ export default class Details extends Component {
         super(props);
     }
 
+    flatten(nestedContact) {
+        // Deep copy
+        const flattenedContact = JSON.parse(JSON.stringify(nestedContact))
+        console.log(flattenedContact)
+        flattenedContact.contactInfo_phone = flattenedContact.contactInfo.phone
+        flattenedContact.contactInfo_email = flattenedContact.contactInfo.email
+        flattenedContact.contactInfo_linkedinId = flattenedContact.contactInfo.linkedinId
+        delete flattenedContact.contactInfo
+        flattenedContact.firstMeetContact_eventName = flattenedContact.firstMeetContact.eventName
+        flattenedContact.firstMeetContact_eventDate = flattenedContact.firstMeetContact.eventDate
+        flattenedContact.firstMeetContact_otherInfo = flattenedContact.firstMeetContact.firstMeetContact_otherInfo
+        delete flattenedContact.firstMeetContact
+        console.log(flattenedContact)
+        return flattenedContact
+    }
+
 	render() {
         const contact = this.props.contacts.find(contact => contact._id === this.props.match.params.id);
         return (
@@ -43,7 +59,7 @@ export default class Details extends Component {
                 </div>
                 <div className="editFormContainer">
                     <h2>Edit Contact</h2>
-                    <ContactForm initial={contact} handleSubmit={this.props.handleEdit} />
+                    <ContactForm initial={this.flatten(contact)} handleSubmit={this.props.handleEdit} submitText="Update Contact" />
                 </div>
                 </Layout>
             </>

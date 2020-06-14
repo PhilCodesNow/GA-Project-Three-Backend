@@ -18,7 +18,7 @@ export default (props) => {
     return (
         <Layout logoff={props.logoff}>
             <h2>New Contact</h2>
-            <ContactForm  initial={blank} handleSubmit={props.handleCreate}/>
+            <ContactForm  initial={blank} handleSubmit={props.handleCreate} submitText="Create New Contact" />
         </Layout>
     );
 };
