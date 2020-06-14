@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import LoginForm from './LoginForm.js';
 
 export default class Login extends Component {
