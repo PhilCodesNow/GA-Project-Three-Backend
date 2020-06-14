@@ -12,11 +12,9 @@ import NewContactPage from './components/NewContactPage.js';
 const UnRoutedApp = (props) => {
 
     // Might need to bind
-
-    const baseURL = true 
-    ? 'http://localhost:3000'
-    : 'https://ga-project-three-backend.herokuapp.com'
-
+    const baseURL = process.env.NODE_ENV === 'production'
+    ? 'https://ga-project-three-backend.herokuapp.com'
+    : 'http://localhost:3000'
 
     //Create State
 
