@@ -28,7 +28,7 @@ export default (props) => {
         delete newData.firstMeetContact_eventDate
         newData.firstMeetContact.otherInfo = newData.firstMeetContact_otherInfo
         delete newData.firstMeetContact_otherInfo
-        props.handleSubmit(newData)
+        return newData
     }
     
     return (
@@ -36,7 +36,8 @@ export default (props) => {
             <div className="formContainer">
                 <form onSubmit={(event) => {
                     event.preventDefault();
-                    nestifyData();
+                    const nestified = nestifyData();
+                    props.handleSubmit(nestified)
                 }}>
                 <label>Contact Name:</label>
                 <input
@@ -106,7 +107,7 @@ export default (props) => {
                     value={formData.conversationNotes}
                     onChange={handleChange}
                 />
-                <input type="submit" value="Create new contact" />
+                <input type="submit" value={props.submitText} />
                 </form>
             </div>
         </>
