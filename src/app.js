@@ -59,7 +59,7 @@ const UnRoutedApp = (props) => {
     };
     
     const handleEdit = async (data) => {
-        const response = await fetch(`${baseURL}/contacts/${id}`, {
+        const response = await fetch(`${baseURL}/contacts/${data._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -67,7 +67,8 @@ const UnRoutedApp = (props) => {
             },
             body: JSON.stringify(data)
         })
-        props.history.push(`/contacts/${id}`)
+        getInfo();
+        props.history.push(`/contacts/${data._id}`)
     }
 
     const deleteContact = async (id) =>{

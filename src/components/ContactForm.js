@@ -28,7 +28,6 @@ export default (props) => {
         delete newData.firstMeetContact_eventDate
         newData.firstMeetContact.otherInfo = newData.firstMeetContact_otherInfo
         delete newData.firstMeetContact_otherInfo
-        console.log(newData)
         return newData
     }
     
