@@ -5,7 +5,7 @@ import LoginForm from './LoginForm.js';
 export default class Login extends Component {
     constructor(props) {
         super(props);
-        this.setState({
+        this.state = ({
             newaccount: false
         });
     }

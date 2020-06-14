@@ -5,9 +5,14 @@ import NewAccount from './components/AccountPage.js';
 import MainPage from './components/MainPage.js';
 import DetailsPage from './components/DetailsPage.js';
 import './css/style.scss';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch, withRouter } from 'react-router-dom';
+import NewContactPage from './components/NewContactPage.js';
 
-const App = (props) => {
+
+const UnRoutedApp = (props) => {
+
+    // Might need to bind
+
     const baseURL = true 
     ? 'http://localhost:3000'
     : 'https://ga-project-three-backend.herokuapp.com'
@@ -16,30 +21,10 @@ const App = (props) => {
     //Create State
 
     // hard coded contacts for debugging
-    const [contacts, setContacts] = React.useState([
-        {
-            "_id": "5edfe2a321f3e237d03a1c24",
-            "name": "Philsterrrrrrrrrr",
-            "conversationNotes": "this guy is so cool",
-            "createdAt": "2020-06-09T19:27:31.630Z",
-            "updatedAt": "2020-06-09T19:27:31.630Z",
-            "__v": 0
-        },
-        {
-            "contactInfo": {
-                "email": "ryan@example.com"
-            },
-            "_id": "5edfe2e921f3e237d03a1c26",
-            "name": "Ryansterrrrrrrr",
-            "conversationNotes": "this guy is way way cool",
-            "createdAt": "2020-06-09T19:28:41.055Z",
-            "updatedAt": "2020-06-09T19:29:34.980Z",
-            "__v": 0
-        }
-    ]);
+    const [contacts, setContacts] = React.useState([]);
     const [currentPageName, setCurrentPageName] = React.useState('main');
     const [token, setToken] = React.useState('');
-    const [formData, setFormData] = React.useState('');
+    const [contactCreated, setContactCreated] = React.useState(false);
 
     //Edit State
     const [editContact, setEditContact] = React.useState({
@@ -58,6 +43,7 @@ const App = (props) => {
             followUpDate: '',
             conversationNotes:'',
     });
+    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
     //Object For Blank Form For Create
     const blank = {
@@ -77,20 +63,19 @@ const App = (props) => {
             conversationNotes:'',
     };
 
-    const handleChange = (event) => {
-        setFormData({ ...formData, [event.target.name]: event.target.value });
-    };
-
     //Function to get contacts from API
     const getInfo = async () => {
-        const response = await fetch (`${baseURL}/contacts/`, {
-            headers: {
-                Authorization: `bearer ${token}`
-            }
-        });
-        const result = await response.json();
-        console.log(result);
-        setContacts(result);
+        try {
+                const response = await fetch (`${baseURL}/contacts/`, {
+                headers: {
+                    Authorization: `bearer ${token}`
+                }
+            });
+            const result = await response.json();
+            setContacts(result);
+        } catch (e) {
+            console.error(e.message)
+        }
     };
 
     //Get Contacts from API
@@ -101,8 +86,7 @@ const App = (props) => {
     }, [token]);
 
     //handleCreate function
-    const handleCreate = async (data) =>
-    {
+    const handleCreate = async (data) => {
         const response = await fetch (`${baseURL}/contacts`, {
             method: 'POST',
             headers: {
@@ -111,7 +95,8 @@ const App = (props) => {
             },
             body: JSON.stringify(data),
         });
-        getInfo(); //Update the list of Contacts
+        props.history.push('/')
+        // getInfo(); //Update the list of Contacts
     };
 
     const handleDelete = async (id) => {
@@ -120,8 +105,20 @@ const App = (props) => {
             Authorization: `bearer ${token}`,
         })
     }
+    
+    const handleEdit = async (data) => {
+        const response = await fetch(`${baseURL}/contacts/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `bearer ${token}`,
+            },
+            body: JSON.stringify(data)
+        })
+        props.history.push(`/contacts/${id}`)
+    }
 
-const login = async () =>{
+const login = async (formData) =>{
     const response = await fetch(`${baseURL}/users`, {
     method: 'POST',
     body: JSON.stringify(formData),
@@ -131,22 +128,31 @@ const login = async () =>{
         const newToken = await response.json()
         setToken(newToken);
         window.localStorage.setItem('token', JSON.stringify(token));
+        props.history.push('/')
+    } else {
+        console.error('HTTP error ' + response.status)
+        console.error(await response.text());
     }
 }
-const test = async () =>{
-    const response = await fetch(`${baseURL}/contacts`, {
-        method: "GET",
-        headers: {
-            "Authorization": `bearer ${token}`,
-        },
+const createAccount = async (formData) => {
+    console.log(formData)
+    const response = await fetch(`${baseURL}/users/new`, {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {"Content-Type": "application/json"}
     })
-    // Fails at forbidden
-    const result = await response.json();
-    console.log(result);
+    if (response.status === 200) {
+        props.history.push('/login');
+    } else {
+        console.error('HTTP error ' + response.status)
+        console.error(await response.text());
+    }
 }
 const logout = () => {
     setToken('');
     window.localStorage.removeItem('token');
+    props.history.push('/');
+    setContacts([])
 }
 
 //     let currentPageComponent;
@@ -189,22 +195,23 @@ const createContact = async () =>{
     });
     getInfo(); //Update the list of Contacts
 }
-const deleteContact = async () =>{
+const deleteContact = async (id) =>{
     console.log('Delete clicked');
-    let lastItem = contacts[0]
-    const response = await fetch (`${baseURL}/contacts/${lastItem._id}`,{
+    const response = await fetch (`${baseURL}/contacts/${id}`,{
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `bearer ${token}`,
         },
-
     })
+        console.log(await response.json())
     getInfo();
 }
+
+
     return (
         <>
-                    <input
+                    {/* <input
                 type="text"
                 name="username"
                 value={formData.username}
@@ -217,20 +224,24 @@ const deleteContact = async () =>{
                 onChange={handleChange}
             />
             <button onClick={login}>Login</button>
-            
             <button onClick={test}>Test</button>
             <button onClick={logout}>Logout</button>
-            <Router>
+            <h1>^ Da Fake Login</h1> */}
+
                 <Switch>
-                    <Route exact path="/" component={(props) => <MainPage {...props} contacts={contacts} />} />
-                    <Route path="/contacts/:id" component={DetailsPage} />
-                    <Route path="/login" component={(props) => <LoginPage {...props} login={login} />} />
-                    <Route path="/new-account" component={NewAccount} />
+                    <Route exact path="/" component={(props) => <MainPage {...props} contacts={contacts} deleteHandler={deleteContact} logoff={logout}/>} />
+                    <Route path="/contacts/new" component={(props) => <NewContactPage {...props} handleCreate={handleCreate} logoff={logout}/>} />
+                    <Route path="/contacts/:id" component={(props) => <DetailsPage {...props} contacts={contacts} handleEdit={handleEdit} logoff={logout}/>} />
+                    <Route path="/login" component={(props) => <LoginPage login={login} />} />
+                    <Route path="/new-account" component={(props) => <NewAccount {...props} createAccount={createAccount} />} />
                 </Switch>
-            </Router>
         </>
     );
 };
+
+// Needed to get props.history inside app
+const RoutedApp = withRouter(UnRoutedApp)
+const App = (props) => <Router><RoutedApp/></Router>;
 
 const target = document.getElementById('app');
 ReactDOM.render(<App />, target);

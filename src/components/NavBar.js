@@ -11,7 +11,7 @@ import Login from './LoginPage';
 export default class NavBar extends Component {
     constructor(props) {
         super(props);
-        this.setState({
+        this.state = ({
             home: true,
             newcontact: false,
             login: false
@@ -23,7 +23,8 @@ export default class NavBar extends Component {
 			<div className="Navbar">
                 <Link to="/">Home</Link>
                 <Link to="/login">Login</Link>
-                <Link to="/new-account">Create New Account</Link>"
+                <Link to="/new-account">Create New Account</Link>
+                <button onClick={this.props.logoff}>Log Out</button>
             </div>
         </>
     );

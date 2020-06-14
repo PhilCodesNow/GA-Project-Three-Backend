@@ -2,23 +2,42 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 export default (props) => {
+
     //State for form data
     const [formData, setFormData] = React.useState(props.initial);
-    
-    //useEffect to update the data when state changes
-    React.useEffect(() => {
-        setFormData(props.initial);
-        }, [props.initial]
-    );
 
     //handlechange function
     const handleChange = (event) => {
-        setFormData({ ...formData, [event.target.name]: event.target.value });
+        setFormData({ ...formData, [event.currentTarget.name]: event.currentTarget.value });
     };
+
+    const nestifyData = () => {
+        // Shallow copy
+        const newData = Object.assign({}, formData)
+        newData.contactInfo = {}
+        newData.contactInfo.phone = newData.contactInfo_phone
+        delete newData.contactInfo_phone
+        newData.contactInfo.email = newData.contactInfo_email
+        delete newData.contactInfo_email
+        newData.contactInfo.linkedinId = newData.contactInfo_linkedinId
+        delete newData.contactInfo_linkedinId
+        newData.firstMeetContact = {}
+        newData.firstMeetContact.eventName = newData.firstMeetContact_eventName
+        delete newData.firstMeetContact_eventName
+        newData.firstMeetContact.eventDate = newData.firstMeetContact_eventDate
+        delete newData.firstMeetContact_eventDate
+        newData.firstMeetContact.otherInfo = newData.firstMeetContact_otherInfo
+        delete newData.firstMeetContact_otherInfo
+        props.handleSubmit(newData)
+    }
     
     return (
         <>
             <div className="formContainer">
+                <form onSubmit={(event) => {
+                    event.preventDefault();
+                    nestifyData();
+                }}>
                 <label>Contact Name:</label>
                 <input
                     type="text"
@@ -31,22 +50,22 @@ export default (props) => {
                 <label>Phone:</label>
                 <input
                     type="text"
-                    name="phone"
-                    value={formData.contactInfo.phone}
+                    name="contactInfo_phone"
+                    value={formData.contactInfo_phone}
                     onChange={handleChange}
                 />
                 <label>Email:</label>
                 <input
                     type="text"
-                    name="email"
-                    value={formData.contactInfo.email}
+                    name="contactInfo_email"
+                    value={formData.contactInfo_email}
                     onChange={handleChange}
                 />
                 <label>LinkedIn:</label>
                 <input
                     type="text"
-                    name="linkedinId"
-                    value={formData.contactInfo.linkedinId}
+                    name="contactInfo_linkedinId"
+                    value={formData.contactInfo_linkedinId}
                     onChange={handleChange}
                 />
                 <br />
@@ -54,22 +73,22 @@ export default (props) => {
                 <label>Event Name:</label>
                 <input
                     type="text"
-                    name="eventName"
-                    value={formData.firstMeetContact.eventName}
+                    name="firstMeetContact_eventName"
+                    value={formData.firstMeetContact_eventName}
                     onChange={handleChange}
                 />
                 <label>Event Date:</label>
                 <input
                     type="date"
-                    name="eventDate"
-                    value={formData.firstMeetContact.eventDate}
+                    name="firstMeetContact_eventDate"
+                    value={formData.firstMeetContact_eventDate}
                     onChange={handleChange}
                 />
                 <label>Notes From Event:</label>
                 <input
                     type="textarea"
-                    name="otherInfo"
-                    value={formData.firstMeetContact.otherInfo}
+                    name="firstMeetContact_otherInfo"
+                    value={formData.firstMeetContact_otherInfo}
                     onChange={handleChange}
                 />
                 <br />
@@ -87,14 +106,8 @@ export default (props) => {
                     value={formData.conversationNotes}
                     onChange={handleChange}
                 />
-                <button
-                    onClick={() => {
-                        props.handleSubmit(formData);
-                        setFormData(props.initial);
-                    }}
-                >
-                    SUBMIT
-                </button>
+                <input type="submit" value="Create new contact" />
+                </form>
             </div>
         </>
     );

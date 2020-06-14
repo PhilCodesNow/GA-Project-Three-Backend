@@ -8,7 +8,8 @@ import {Link} from 'react-router-dom';
 export default (props) => {
     return (
         <>
-            <Layout>
+            <Layout logoff={props.logoff}>
+            <Link to="/contacts/new" >Add new contact</Link>
             <div className="detailsContainer">
                 <ul>
                 {props.contacts.map((contact, index) => {
