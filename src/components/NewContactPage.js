@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ContactForm from './ContactForm.js';
+import Layout from './Layout.js'
 
 export default (props) => {
     const blank = {
@@ -15,9 +16,9 @@ export default (props) => {
         conversationNotes:'',
     };
     return (
-        <>
+        <Layout logoff={props.logoff}>
             <h2>New Contact</h2>
             <ContactForm  initial={blank} handleSubmit={props.handleCreate}/>
-        </>
+        </Layout>
     );
 };

@@ -21,27 +21,7 @@ const UnRoutedApp = (props) => {
     //Create State
 
     // hard coded contacts for debugging
-    const [contacts, setContacts] = React.useState([
-        {
-            "_id": "5edfe2a321f3e237d03a1c24",
-            "name": "Philsterrrrrrrrrr",
-            "conversationNotes": "this guy is so cool",
-            "createdAt": "2020-06-09T19:27:31.630Z",
-            "updatedAt": "2020-06-09T19:27:31.630Z",
-            "__v": 0
-        },
-        {
-            "contactInfo": {
-                "email": "ryan@example.com"
-            },
-            "_id": "5edfe2e921f3e237d03a1c26",
-            "name": "Ryansterrrrrrrr",
-            "conversationNotes": "this guy is way way cool",
-            "createdAt": "2020-06-09T19:28:41.055Z",
-            "updatedAt": "2020-06-09T19:29:34.980Z",
-            "__v": 0
-        }
-    ]);
+    const [contacts, setContacts] = React.useState([]);
     const [currentPageName, setCurrentPageName] = React.useState('main');
     const [token, setToken] = React.useState('');
     const [contactCreated, setContactCreated] = React.useState(false);
@@ -94,7 +74,7 @@ const UnRoutedApp = (props) => {
             const result = await response.json();
             setContacts(result);
         } catch (e) {
-            console.error(e.msg)
+            console.error(e.message)
         }
     };
 
@@ -171,6 +151,8 @@ const createAccount = async (formData) => {
 const logout = () => {
     setToken('');
     window.localStorage.removeItem('token');
+    props.history.push('/');
+    setContacts([])
 }
 
 //     let currentPageComponent;
@@ -247,9 +229,9 @@ const deleteContact = async (id) =>{
             <h1>^ Da Fake Login</h1> */}
 
                 <Switch>
-                    <Route exact path="/" component={(props) => <MainPage {...props} contacts={contacts} deleteHandler={deleteContact}/>} />
-                    <Route path="/contacts/new" component={(props) => <NewContactPage {...props} handleCreate={handleCreate}/>} />
-                    <Route path="/contacts/:id" component={(props) => <DetailsPage {...props} contacts={contacts} handleEdit={handleEdit}/>} />
+                    <Route exact path="/" component={(props) => <MainPage {...props} contacts={contacts} deleteHandler={deleteContact} logoff={logout}/>} />
+                    <Route path="/contacts/new" component={(props) => <NewContactPage {...props} handleCreate={handleCreate} logoff={logout}/>} />
+                    <Route path="/contacts/:id" component={(props) => <DetailsPage {...props} contacts={contacts} handleEdit={handleEdit} logoff={logout}/>} />
                     <Route path="/login" component={(props) => <LoginPage login={login} />} />
                     <Route path="/new-account" component={(props) => <NewAccount {...props} createAccount={createAccount} />} />
                 </Switch>

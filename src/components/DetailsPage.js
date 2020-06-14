@@ -12,7 +12,7 @@ export default class Details extends Component {
         const contact = this.props.contacts.find(contact => contact._id === this.props.match.params.id);
         return (
             <>
-                <Layout>
+                <Layout logoff={this.props.logoff}>
                 <div className="container">
                     <ul>
                     {/* Some complex conditional rendering here could be eliminated by creating defaults for subdocuments on the backend */}
