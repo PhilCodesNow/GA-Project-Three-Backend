@@ -21,6 +21,8 @@ export default (props) => {
         delete newData.contactInfo_email
         newData.contactInfo.linkedinId = newData.contactInfo_linkedinId
         delete newData.contactInfo_linkedinId
+        newData.contactInfo.other = newData.contactInfo_other
+        delete newData.contactInfo_other
         newData.firstMeetContact = {}
         newData.firstMeetContact.eventName = newData.firstMeetContact_eventName
         delete newData.firstMeetContact_eventName
@@ -67,6 +69,13 @@ export default (props) => {
                     type="text"
                     name="contactInfo_linkedinId"
                     value={formData.contactInfo_linkedinId}
+                    onChange={handleChange}
+                />
+                <label>Other:</label>
+                <input
+                    type="text"
+                    name="contactInfo_other"
+                    value={formData.contactInfo_other}
                     onChange={handleChange}
                 />
                 <br />

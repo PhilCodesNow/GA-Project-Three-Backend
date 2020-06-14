@@ -11,12 +11,11 @@ export default (props) => {
 
 
     return (
-        <>
+        <div className="naContainer">
             <form onSubmit={(event) => {
                 event.preventDefault();
                 props.createAccount(formData)
             }}>
-
                 <label htmlFor="username">New Username:</label>
                 <input
                     type="text"
@@ -33,6 +32,6 @@ export default (props) => {
                 />
                 <input type="submit" value="Create New User"/>
             </form>
-        </>
+        </div>
     );
 };

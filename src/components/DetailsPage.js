@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import ContactForm from './ContactForm.js';
 import Layout from './Layout.js'
+import {Link} from 'react-router-dom';
 
 export default class Details extends Component {
     constructor(props) {
@@ -15,10 +16,11 @@ export default class Details extends Component {
         flattenedContact.contactInfo_phone = flattenedContact.contactInfo.phone
         flattenedContact.contactInfo_email = flattenedContact.contactInfo.email
         flattenedContact.contactInfo_linkedinId = flattenedContact.contactInfo.linkedinId
+        flattenedContact.contactInfo_other = flattenedContact.contactInfo.other
         delete flattenedContact.contactInfo
         flattenedContact.firstMeetContact_eventName = flattenedContact.firstMeetContact.eventName
         flattenedContact.firstMeetContact_eventDate = flattenedContact.firstMeetContact.eventDate
-        flattenedContact.firstMeetContact_otherInfo = flattenedContact.firstMeetContact.firstMeetContact_otherInfo
+        flattenedContact.firstMeetContact_otherInfo = flattenedContact.firstMeetContact.otherInfo
         delete flattenedContact.firstMeetContact
         console.log(flattenedContact)
         return flattenedContact
@@ -30,6 +32,7 @@ export default class Details extends Component {
             <>
                 <Layout logoff={this.props.logoff}>
                 <div className="container">
+                    <Link to="/contacts/new" >Add new contact</Link>
                     <ul>
                         <li>{`Name: ${contact.name}`}</li>
                         {contact.contactInfo &&
@@ -47,7 +50,7 @@ export default class Details extends Component {
                                 <li>First Met Contact Info:</li>
                                 <li>{`Event Name: ${contact.firstMeetContact.eventName}`}</li>
                                 <li>{`Event Date: ${contact.firstMeetContact.eventDate}`}</li>
-                                <li>{`Event Info: ${contact.firstMeetContact.eventInfo}`}</li>
+                                <li>{`Event Info: ${contact.firstMeetContact.otherInfo}`}</li>
                             </>
                         }
                         <br />
