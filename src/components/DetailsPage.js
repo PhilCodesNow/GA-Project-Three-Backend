@@ -15,7 +15,6 @@ export default class Details extends Component {
                 <Layout logoff={this.props.logoff}>
                 <div className="container">
                     <ul>
-                    {/* Some complex conditional rendering here could be eliminated by creating defaults for subdocuments on the backend */}
                         <li>{`Name: ${contact.name}`}</li>
                         {contact.contactInfo &&
                             <>

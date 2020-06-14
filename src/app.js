@@ -18,48 +18,9 @@ const UnRoutedApp = (props) => {
 
     //Create State
 
-    // hard coded contacts for debugging
     const [contacts, setContacts] = React.useState([]);
-    const [currentPageName, setCurrentPageName] = React.useState('main');
     const [token, setToken] = React.useState('');
-    const [contactCreated, setContactCreated] = React.useState(false);
-
-    //Edit State
-    const [editContact, setEditContact] = React.useState({
-            name: '',
-            contactInfo: {
-                phone: '',
-                email:'',
-                linkedinId: '',
-                other:''
-            },
-            firstMeetContact: {
-                eventName:'',
-                eventDate:'',
-                otherInfo:'',
-            },
-            followUpDate: '',
-            conversationNotes:'',
-    });
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-
-    //Object For Blank Form For Create
-    const blank = {
-        name: '',
-            contactInfo: {
-                phone: '',
-                email:'',
-                linkedinId: '',
-                other:''
-            },
-            firstMeetContact: {
-                eventName:'',
-                eventDate:'',
-                otherInfo:'',
-            },
-            followUpDate: '',
-            conversationNotes:'',
-    };
 
     //Function to get contacts from API
     const getInfo = async () => {
@@ -96,13 +57,6 @@ const UnRoutedApp = (props) => {
         props.history.push('/')
         // getInfo(); //Update the list of Contacts
     };
-
-    const handleDelete = async (id) => {
-        const response = await fetch (`${baseURL}/contacts/${id}`, {
-            method: 'DELETE',
-            Authorization: `bearer ${token}`,
-        })
-    }
     
     const handleEdit = async (data) => {
         const response = await fetch(`${baseURL}/contacts/${id}`, {
@@ -114,6 +68,17 @@ const UnRoutedApp = (props) => {
             body: JSON.stringify(data)
         })
         props.history.push(`/contacts/${id}`)
+    }
+
+    const deleteContact = async (id) =>{
+        const response = await fetch (`${baseURL}/contacts/${id}`,{
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `bearer ${token}`,
+            },
+        })
+        getInfo();
     }
 
 const login = async (formData) =>{
@@ -153,91 +118,20 @@ const logout = () => {
     setContacts([])
 }
 
-//     let currentPageComponent;
-//     if (currentPageName === 'main') {
-//         currentPageComponent = <Home contacts={contacts}/>
-//     } else if (currentPageName === 'login') {
-//         const loginHandlers = {
-//             login,
-//             logout,
-//         }
-//         // Need to decide how and where we want logout button to appear
-//         currentPageComponent = <Login loginHandlers={loginHandlers} setCurrentPageName={setCurrentPageName}/>
-//     } else {
-//         currentPageComponent = <NewAccount createAccount={createAccount} />
-//     }
-const createContact = async () =>{
-    console.log('created Contact');
-    const response = await fetch (`${baseURL}/contacts/new`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `bearer ${token}`,
-        },
-        body: JSON.stringify({
-            "name": "this guy",
-                "contactInfo": {
-                    "phone": "phone number",
-                    "email": "email account",
-                    "linkedinId": "Linked IN",
-                    "other": "cool guy"
-                },
-                "firstMeetContact": {
-                    "eventName": "meetup",
-                    "eventDate": "",
-                    "otherInfo": "Other Info Here"
-                },
-                "followUpDate": "",
-                "conversationNotes": "notes here"
-        }),
-    });
-    getInfo(); //Update the list of Contacts
-}
-const deleteContact = async (id) =>{
-    console.log('Delete clicked');
-    const response = await fetch (`${baseURL}/contacts/${id}`,{
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `bearer ${token}`,
-        },
-    })
-        console.log(await response.json())
-    getInfo();
-}
 
 
     return (
-        <>
-                    {/* <input
-                type="text"
-                name="username"
-                value={formData.username}
-                onChange={handleChange}
-            />
-            <input
-                type="text"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-            />
-            <button onClick={login}>Login</button>
-            <button onClick={test}>Test</button>
-            <button onClick={logout}>Logout</button>
-            <h1>^ Da Fake Login</h1> */}
-
-                <Switch>
-                    <Route exact path="/" component={(props) => <MainPage {...props} contacts={contacts} deleteHandler={deleteContact} logoff={logout}/>} />
-                    <Route path="/contacts/new" component={(props) => <NewContactPage {...props} handleCreate={handleCreate} logoff={logout}/>} />
-                    <Route path="/contacts/:id" component={(props) => <DetailsPage {...props} contacts={contacts} handleEdit={handleEdit} logoff={logout}/>} />
-                    <Route path="/login" component={(props) => <LoginPage login={login} />} />
-                    <Route path="/new-account" component={(props) => <NewAccount {...props} createAccount={createAccount} />} />
-                </Switch>
-        </>
+        <Switch>
+            <Route exact path="/" component={(props) => <MainPage {...props} contacts={contacts} deleteHandler={deleteContact} logoff={logout}/>} />
+            <Route path="/contacts/new" component={(props) => <NewContactPage {...props} handleCreate={handleCreate} logoff={logout}/>} />
+            <Route path="/contacts/:id" component={(props) => <DetailsPage {...props} contacts={contacts} handleEdit={handleEdit} logoff={logout}/>} />
+            <Route path="/login" component={(props) => <LoginPage login={login} />} />
+            <Route path="/new-account" component={(props) => <NewAccount {...props} createAccount={createAccount} />} />
+        </Switch>
     );
 };
 
-// Needed to get props.history inside app
+// Needed to get props.history inside app, so use withRouter
 const RoutedApp = withRouter(UnRoutedApp)
 const App = (props) => <Router><RoutedApp/></Router>;
 

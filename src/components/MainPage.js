@@ -1,12 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from '../app';
-import NewContact from './NewContactPage';
-import LoginPage from './LoginPage';
-import Details from './DetailsPage';
-import Header from './Header';
-import NavBar from './NavBar';
-import Footer from './Footer';
 import Layout from './Layout.js';
 import {Link} from 'react-router-dom';
 
