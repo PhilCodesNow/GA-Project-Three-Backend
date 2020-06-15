@@ -8,7 +8,21 @@ For this project, we used the MEAN stack. We also used React Router for the fron
 The app itself is a CRUD full-stack app that allows users to log on and create an account for accessing a database for their networking contacts in a GUI. The user can then create records for contacts with each record containing important information, such as name, contacts, and the details of their meeting and follow-up dates. Entries can be edited and deleted. The home page shows all contacts with key information that can be expanded for individuals.
 
 # Unsolved problems
-We would like to be able to create follow-up reminders. We also would like to make a LinkedIn integration.
+We would like to be able to create follow-up reminders. We also would like to make a LinkedIn integration. Finally, we would like to improve the formatting of dates.
+
+# Communication and Other Technologies
+For communication purposes we used our slack channel, zoom and trello. Trello we used to organize the daily work breakdown. We had stand normally around 1 pm every day and then slacked and zoomed other times when needed. Keeping each other up to date with changes.
+
+![Trello Board](/src/img/trello.png)
+
+We also implemented figma for wireframing. It has a really nice mirror feature so you're able to see the site from an app on your device of choice.
+
+![Figma Picture 1](/src/img/Figma1.png)
+
+![Figma Picture 2](/src/img/Figma2.png)
+
+![Figma Picture 3](/src/img/Figma3.png)
+
 
 # Contributors
 Phil Mayo, Abe Polk, Ryan Ross
