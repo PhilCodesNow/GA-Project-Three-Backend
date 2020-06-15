@@ -11,6 +11,4 @@ The app itself is a CRUD full-stack app that allows users to log on and create a
 We would like to be able to create follow-up reminders. We also would like to make a LinkedIn integration. Finally, we would like to improve the formatting of dates.
 
 # Contributors
-Phil Mayo
-Abe Polk
-Ryan Ross
+Phil Mayo, Abe Polk, Ryan Ross
