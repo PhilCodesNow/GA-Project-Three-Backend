@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 export default (props) => {
 
@@ -16,21 +15,21 @@ export default (props) => {
                 event.preventDefault();
                 props.createAccount(formData)
             }}>
-                <label htmlFor="username">New Username:</label>
+                <label htmlFor="username">Username:</label>
                 <input
                     type="text"
                     name="username"
                     value={formData.username}
                     onChange={handleChange}    
                 />
-                <label htmlFor="password">New Password:</label>
+                <label htmlFor="password">Password:</label>
                 <input
                     type="password"
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
                 />
-                <input type="submit" value="Create New User"/>
+                <input className="submit" type="submit" value="Create New User"/>
             </form>
         </div>
     );

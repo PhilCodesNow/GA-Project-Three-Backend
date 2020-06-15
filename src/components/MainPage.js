@@ -7,15 +7,15 @@ export default (props) => {
         <>
             <Layout logoff={props.logoff}>
             <div className="detailsContainer">
-                <Link to="/contacts/new" > Add New Contact</Link>
+                <Link className="nabutton" to="/contacts/new" >Add New Contact</Link>
                 <ul>
                 {props.contacts.map((contact, index) => {
                     return (
-                        <li key={index}>
+                        <li key={index} className="items">
                             <h2>{contact.followUpDate}</h2>
                             <h2>{contact.name}</h2>
                             <Link to={`/contacts/${contact._id}`}>More Info</Link>
-                            <button onClick={() => props.deleteHandler(contact._id)}><image className="icon" src='../img/trashcan.svg'></image></button>
+                            <button onClick={() => props.deleteHandler(contact._id)}><img className="icon" src={require('../img/trashcan.svg')} /></button>
                         </li>
                     )
                 })}

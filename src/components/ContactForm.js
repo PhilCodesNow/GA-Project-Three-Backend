@@ -49,6 +49,7 @@ export default (props) => {
                     onChange={handleChange}
                 />
                 <br />
+                <br></br>
                 <h3><u>Contact Information</u></h3>
                 <label>Phone:</label>
                 <input
@@ -79,6 +80,7 @@ export default (props) => {
                     onChange={handleChange}
                 />
                 <br />
+                <br></br>
                 <h3><u>First Met Information</u></h3>
                 <label>Event Name:</label>
                 <input
@@ -95,13 +97,14 @@ export default (props) => {
                     onChange={handleChange}
                 />
                 <label>Notes From Event:</label>
-                <input
-                    type="textarea"
+                <textarea
                     name="firstMeetContact_otherInfo"
                     value={formData.firstMeetContact_otherInfo}
                     onChange={handleChange}
+                    rows="5"
                 />
                 <br />
+                <br></br>
                 <label>Next Follow Up Date:</label>
                 <input
                     type="date"
@@ -110,13 +113,13 @@ export default (props) => {
                     onChange={handleChange}
                 />
                 <label>Conversation Notes:</label>
-                <input
-                    type="textarea"
+                <textarea
                     name="conversationNotes"
                     value={formData.conversationNotes}
                     onChange={handleChange}
+                    rows="8"
                 />
-                <input type="submit" value={props.submitText} />
+                <input className="submit" type="submit" value={props.submitText} />
                 </form>
             </div>
         </>

@@ -6,10 +6,12 @@ import Footer from './Footer';
 export default (props) => {
     return (
         <>
-            <Header />
-            <NavBar login={props.login} handleCreate={props.handleCreate} logoff={props.logoff}/>
-            {props.children}
-            <Footer />
+            <div className="wrapper">
+                <Header />
+                <NavBar login={props.login} handleCreate={props.handleCreate} logoff={props.logoff}/>
+                {props.children}
+                <Footer />
+            </div>
         </>
     );
 };

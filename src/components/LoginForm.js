@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 export default (props) => {
 
@@ -30,8 +29,8 @@ export default (props) => {
                     onChange={handleChange}
                 />
                 <br/>
-                <input type="submit" value="Log In" />
+                <input className="submit" type="submit" value="Log In" />
             </form>
         </div>
     );
-    }
+}

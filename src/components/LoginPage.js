@@ -12,9 +12,11 @@ export default class Login extends Component {
             <>
                 <Header />
                 <LoginForm login={this.props.login} />
-                <Link to="/new-account">Create New Account</Link>
+                <Link className="nabutton" to="/new-account">Create New Account</Link>
                 <div className="sampleContainer">
-                    <h1>SAMPLE IMAGE OF SITE</h1>
+                    <h2 className="sampleText"><u>Site Preview</u></h2>
+                    <img className="sample" src={require('../img/sample-home.png')} />
+                    <img className="sample" src={require('../img/sample-contacts.png')} />
                 </div>
             </>
         );

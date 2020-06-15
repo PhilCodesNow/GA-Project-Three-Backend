@@ -31,13 +31,13 @@ export default class Details extends Component {
         return (
             <>
                 <Layout logoff={this.props.logoff}>
+                <Link className="contactButton" to="/contacts/new" >Add New Contact</Link>
                 <div className="container">
-                    <Link to="/contacts/new" >Add new contact</Link>
                     <ul>
-                        <li>{`Name: ${contact.name}`}</li>
+                        <li>{`Name: ${contact.name}`}</li><br />
                         {contact.contactInfo &&
                             <>
-                                <li>Contact Info:</li>
+                                <li><u>Contact Info</u></li>
                                 <li>{`Phone: ${contact.contactInfo.phone}`}</li>
                                 <li>{`Email: ${contact.contactInfo.email}`}</li>
                                 <li>{`LinkedIn: ${contact.contactInfo.linkedinId}`}</li>
@@ -47,7 +47,7 @@ export default class Details extends Component {
                         <br />
                         {contact.firstMeetContact &&
                             <>
-                                <li>First Met Contact Info:</li>
+                                <li><u>First Met Contact Info</u></li>
                                 <li>{`Event Name: ${contact.firstMeetContact.eventName}`}</li>
                                 <li>{`Event Date: ${contact.firstMeetContact.eventDate}`}</li>
                                 <li>{`Event Info: ${contact.firstMeetContact.otherInfo}`}</li>
@@ -57,11 +57,14 @@ export default class Details extends Component {
                         <li>{`Follow Up Date: ${contact.followUpDate}`}</li>
                         <li>{`Converstaion Notes: ${contact.conversationNotes}`}</li>
                     </ul>
-                    <button>Edit Icon</button>
-                    <button>Delete Icon</button>
+                    <div className="buttons">
+                        <button className="detailsButton"><img className="icon" src={require('../img/edit.svg')} /></button>
+                        <button className="detailsButton"><img className="icon" src={require('../img/trashcan.svg')} /></button>
+                    </div>
                 </div>
                 <div className="editFormContainer">
-                    <h2>Edit Contact</h2>
+                    <h2 className="editTitle">Edit Contact</h2>
+                    <br></br>
                     <ContactForm initial={this.flatten(contact)} handleSubmit={this.props.handleEdit} submitText="Update Contact" />
                 </div>
                 </Layout>
