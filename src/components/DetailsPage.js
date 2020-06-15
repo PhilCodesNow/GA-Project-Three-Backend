@@ -12,7 +12,6 @@ export default class Details extends Component {
     flatten(nestedContact) {
         // Deep copy
         const flattenedContact = JSON.parse(JSON.stringify(nestedContact))
-        console.log(flattenedContact)
         flattenedContact.contactInfo_phone = flattenedContact.contactInfo.phone
         flattenedContact.contactInfo_email = flattenedContact.contactInfo.email
         flattenedContact.contactInfo_linkedinId = flattenedContact.contactInfo.linkedinId
@@ -22,7 +21,6 @@ export default class Details extends Component {
         flattenedContact.firstMeetContact_eventDate = flattenedContact.firstMeetContact.eventDate
         flattenedContact.firstMeetContact_otherInfo = flattenedContact.firstMeetContact.otherInfo
         delete flattenedContact.firstMeetContact
-        console.log(flattenedContact)
         return flattenedContact
     }
 

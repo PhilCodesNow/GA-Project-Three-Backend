@@ -20,7 +20,28 @@ const UnRoutedApp = (props) => {
 
     const [contacts, setContacts] = React.useState([]);
     const [token, setToken] = React.useState('');
-    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+
+    // from https://stackoverflow.com/questions/23593052/format-javascript-date-as-yyyy-mm-dd
+    const parseDate = (date) => {
+        const d = new Date(date);
+        let month = '' + (d.getMonth() + 1);
+        let day = '' + d.getDate();
+        const year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
+
+    const formatDates = (contacts) => {
+        for (let contact of contacts) {
+            contact.firstMeetContact.eventDate = parseDate(contact.firstMeetContact.eventDate)
+            contact.followUpDate = parseDate(contact.followUpDate);
+        }
+    }
 
     //Function to get contacts from API
     const getInfo = async () => {
@@ -31,6 +52,7 @@ const UnRoutedApp = (props) => {
                 }
             });
             const result = await response.json();
+            formatDates(result);
             setContacts(result);
         } catch (e) {
             console.error(e.message)
