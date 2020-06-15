@@ -25,7 +25,7 @@ const UnRoutedApp = (props) => {
     const parseDate = (date) => {
         const d = new Date(date);
         let month = '' + (d.getMonth() + 1);
-        let day = '' + d.getDate();
+        let day = '' + (d.getDate() + 1);
         const year = d.getFullYear();
     
         if (month.length < 2) 
